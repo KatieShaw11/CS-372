@@ -1,5 +1,5 @@
 
-// HW 1: Area of a Circle
+// HW 1: PR1_4: Area of a Circle
 // KATIE SHAW
 // Due 1/6/2014
 
@@ -7,10 +7,19 @@ package pr1_4.area.of.a.circle;
 import java.util.Scanner;
 import java.util.*;
 
+/**
+ * 
+ * @author kshaw
+ */
+
 public class PR1_4AreaOfACircle 
 {
-
-    public static void main(String[] args)  // use java docs???
+    /**
+     * 
+     * @param args 
+     */
+    
+    public static void main(String[] args)
     {
         final double PI = 3.14;
         
