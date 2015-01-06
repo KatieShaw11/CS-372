@@ -25,22 +25,29 @@ public class PR1_6PrimeNumbers
     
     public static void main(String[] args) 
     {
+        System.out.println("Prime numbers from 1 to 100:\n");
+        
+        // Since 2 is a special case, I'm just printing it out here:
+        System.out.println("The number 2 is prime!\n"); 
+        
         for (int i = 0; i < 101; i++)
         {
-            for (int j = 2; j < i; j++)
+            for (int j = 2; j <= i; j++)
             {
                 if (i%j != 0) // Still not prime (based on current test)
                 {
                     if (j == (i-1)) // gone through all the numbers w/o breaking; is prime
                     {
-                        System.out.println("***The number " + i + " IS prime!\n");
+                        System.out.println("The number " + i + " is prime!\n");
                     }
-                    continue;
+                   
+                        continue;
                 }
+
                 
                 else // it's divisible by a number
                 {
-                    System.out.println("The number " + i + " is not prime.\n");
+                    //System.out.println("The number " + i + " is not prime.\n");
                     break;
                 }
             }

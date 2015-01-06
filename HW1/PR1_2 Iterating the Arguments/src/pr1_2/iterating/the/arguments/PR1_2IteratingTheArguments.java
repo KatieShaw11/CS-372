@@ -6,7 +6,6 @@
 /* Write a program that prints three arguments taken from the command line. 
    To do this, you’ll need to index into the command-line array of Strings. */
 package pr1_2.iterating.the.arguments;
-import java.util.Scanner;
 
 /**
  * 
@@ -22,11 +21,11 @@ public class PR1_2IteratingTheArguments
 
     public static void main(String[] args) 
     {
-        for (int i = 0; i < 3; i++)
+        if (args.length > 0)
         {
-            if (args.length > 0)
+            for (int i = 0; i < args.length; i++)
             {
-              System.out.println(args[i]);
+              System.out.println("Arg: " + args[i]);
             }
         }
     }

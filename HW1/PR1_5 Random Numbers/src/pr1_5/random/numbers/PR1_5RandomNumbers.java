@@ -25,11 +25,13 @@ public class PR1_5RandomNumbers
     
     public static void main(String[] args) 
     {
+        System.out.println("25 random integers:\n");
+        
         Random rand = new Random();
         int num;
         for (int i = 0; i < 25; i++)
         {
-            num = rand.nextInt(100);
+            num = rand.nextInt();
             System.out.println(num);
         }
     }
