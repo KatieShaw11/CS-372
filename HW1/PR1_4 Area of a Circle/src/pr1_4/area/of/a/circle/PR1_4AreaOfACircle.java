@@ -21,7 +21,7 @@ public class PR1_4AreaOfACircle
     
     public static void main(String[] args)
     {
-        final double PI = 3.14;
+        final double PI = 3.14; //PT: use java.lang.Math.PI
         
         Scanner user_input = new Scanner( System.in );
         String radius;
