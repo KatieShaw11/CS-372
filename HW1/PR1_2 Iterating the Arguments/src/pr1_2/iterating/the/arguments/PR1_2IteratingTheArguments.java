@@ -21,6 +21,7 @@ public class PR1_2IteratingTheArguments
 
     public static void main(String[] args) 
     {
+       //PT: Actually you don't need this if statement. If args.length == 0, then you won't go into the for loop
         if (args.length > 0)
         {
             for (int i = 0; i < args.length; i++)
