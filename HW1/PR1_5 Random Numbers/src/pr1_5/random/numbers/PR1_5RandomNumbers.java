@@ -33,6 +33,7 @@ public class PR1_5RandomNumbers
         {
             num = rand.nextInt();
             System.out.println(num);
+            //PT: You're missing the checks to see if these numbers are bigger or smaller than others. -7
         }
     }
     
