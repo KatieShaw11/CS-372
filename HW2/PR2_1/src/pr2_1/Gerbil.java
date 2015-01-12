@@ -37,6 +37,8 @@ public class Gerbil
     
     public void setGerbNum(int num)
     {
+        //PT -- is there some data validation that you should do here?
+        //     does it make sense to have -3 gerbils? -1
         gerbilNumber = num;
     }
 

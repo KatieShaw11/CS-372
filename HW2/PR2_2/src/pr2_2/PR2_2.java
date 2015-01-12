@@ -4,6 +4,7 @@ hop( ).
  */
 package pr2_2;
 import java.util.ArrayList;
+//PT: good use of code reuse here!
 import pr2_1.Gerbil; // need project 1 for this project
 import java.util.Iterator;
 /**

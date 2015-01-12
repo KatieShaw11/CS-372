@@ -7,6 +7,9 @@ package pr2_6;
 import javax.swing.DefaultListModel;
 import pr2_6.GradeCalculation;
 
+//PT: Make the button big enough to fit the Submit text
+// PT: the grades aren't showing up in the list. -5
+
 /**
  *
  * @author kshaw

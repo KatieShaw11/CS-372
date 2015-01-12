@@ -5,6 +5,9 @@
  */
 package pr2_7;
 
+//PT: It'd be good to rename your component variables to things other than
+//    jLabel2
+
 /**
  *
  * @author katidid

@@ -26,6 +26,9 @@ public class Calculation
         
         for (int i = 0; i < numPlaces; i++)
         {
+            //PT -- notice that both the if and else code are the same,
+            //   other than the + or -. Could you get rid of the if?
+            //   hint: (-1)^n is -1 if n is odd, and 1 if n is even
             if(operatorSwitch == true) // then subtract
             {
                 PInum = PInum - (4.0/denominator);
