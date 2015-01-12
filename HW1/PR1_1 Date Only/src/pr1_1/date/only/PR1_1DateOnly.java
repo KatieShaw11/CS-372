@@ -38,6 +38,5 @@ public class PR1_1DateOnly
         // Fragment of ATypeName (the below line)
         ATypeName a = new ATypeName();
     }
-    
 }
 

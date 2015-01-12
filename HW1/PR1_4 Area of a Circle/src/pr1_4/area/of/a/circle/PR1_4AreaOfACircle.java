@@ -35,6 +35,5 @@ public class PR1_4AreaOfACircle
         System.out.print("Area is ");
         System.out.println(area);
         
-    }
-    
+    }   
 }
