@@ -32,21 +32,25 @@ public class PR2_4 {
         Scanner sc = new Scanner(System.in);
         howFar = sc.nextInt();
         double PICalced; 
-        //PICalced = calculate(howFar);
-        //System.out.println("PI is " + PICalced + ".");
+        PICalced = Calculation.calculate(howFar);
+        System.out.println("PI is " + PICalced + ".");
         
         PICalced = Calculation.calculate(howFar);
         System.out.println("\n\nWould you like to print a table of the first 200,000 terms? (Type 1 for yes, 2 for no)");
         Scanner sc2 = new Scanner(System.in);
         if(sc2.nextInt() == 1);
-            //makeTable();
+            makeTable();
     }
-    
-    public void makeTable()
-    {
+    /**
+     * 
+     */
+    public static void makeTable()
+    {  
+        double PICalcedBig = Calculation.calculate(200000);
+        
         for(int i = 0; i < 200000; i++)
         {
-            System.out.println("");
+            System.out.println(Calculation.getAllNums().get(i));
         }
     }
     

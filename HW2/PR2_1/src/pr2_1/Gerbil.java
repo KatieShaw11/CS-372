@@ -39,11 +39,10 @@ public class Gerbil
     {
         gerbilNumber = num;
     }
-    
+
     /**
      * 
      */
-    
     public void hop()
     {
         System.out.printf("Gerbil number %d is hopping.\n", gerbilNumber);
