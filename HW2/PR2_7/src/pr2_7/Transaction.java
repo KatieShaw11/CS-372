@@ -5,20 +5,17 @@
  */
 package pr2_7;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author katidid
  */
-public class ThinMint extends Cookie
+public class Transaction 
 {
-    private int price;
+    private ArrayList<Cookie> cookiesSold = new ArrayList<Cookie>();
     
-    public ThinMint()
-    {
-        price = 3;
-    }
-    public int getPrice()
-    {
-        return price;
-    }
+    
+    
+
 }
