@@ -68,12 +68,22 @@ public class HomeworkApp extends javax.swing.JFrame {
 
         jLabel1.setText("New Grade:");
 
-        jList1.setModel(new DefaultListModel<String>()
+        jList1.setModel(new DefaultListModel<Double>()
             {
-                public int getSize(){return calculator.getGradeList().size();}
-                public String getElementAt(int i) {return calculator.getGradeList().get(i);}
-                public void addElement(String f) {super.addElement(f); calculator.getGradeList().add(f);}
-                public void add(int i, String f) {super.add(i,f); calculator.getGradeList().add(i,f);}
+                public int getSize(){
+                    return calculator.getGradeList().size();
+                }
+                public Double getElementAt(int i) {
+                    return calculator.getGrade(i);
+                }
+                public void addElement(Double f) {
+                    super.addElement(f);
+                    calculator.addGrade(f);
+                }
+                public void add(int i, Double f) {
+                    super.add(i,f);
+                    calculator.addGrade(f);
+                }
             });
             jScrollPane1.setViewportView(jList1);
 
@@ -151,10 +161,10 @@ public class HomeworkApp extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String text = jTextField1.getText();; // example String
-        double value = Double.parseDouble(text);
-        calculator.addGrade(value);
+        Double value = Double.parseDouble(text);
+        //calculator.addGrade(value);
         //calculator.addGrade(jTextField1.getText());
-        
+        ((DefaultListModel)jList1.getModel()).addElement(value);
         
         AverageLabel.setText("Average:" + calculator.calcAverage());
         MinLabel.setText("Minimum: " + calculator.getMin());

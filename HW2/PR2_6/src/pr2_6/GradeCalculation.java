@@ -32,10 +32,12 @@ public class GradeCalculation
         return stringGrades;       
     }
     
-    public void addGrade(double grade)
+    public void addGrade(Double grade)
     {
         theGrades.add(grade);
     }
+    
+    public Double getGrade(int i) { return theGrades.get(i); }
     
     public  double calcAverage() // Using main, static
     {

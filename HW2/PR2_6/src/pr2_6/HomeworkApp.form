@@ -130,7 +130,7 @@
         <Component class="javax.swing.JList" name="jList1">
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new DefaultListModel&lt;String&gt;()&#xa;{&#xa;    public int getSize(){return calculator.getGradeList().size();}&#xa;    public String getElementAt(int i) {return calculator.getGradeList().get(i);}&#xa;    public void addElement(String f) {super.addElement(f); calculator.getGradeList().add(f);}&#xa;    public void add(int i, String f) {super.add(i,f); calculator.getGradeList().add(i,f);}&#xa;}" type="code"/>
+              <Connection code="new DefaultListModel&lt;Double&gt;()&#xa;{&#xa;    public int getSize(){&#xa;        return calculator.getGradeList().size();&#xa;    }&#xa;    public Double getElementAt(int i) {&#xa;        return calculator.getGrade(i);&#xa;    }&#xa;    public void addElement(Double f) {&#xa;        super.addElement(f); &#xa;        calculator.addGrade(f);&#xa;    }&#xa;    public void add(int i, Double f) {&#xa;        super.add(i,f);&#xa;        calculator.addGrade(f);&#xa;    }&#xa;}" type="code"/>
             </Property>
           </Properties>
         </Component>
