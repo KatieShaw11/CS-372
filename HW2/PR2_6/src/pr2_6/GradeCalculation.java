@@ -62,7 +62,7 @@ public class GradeCalculation
         return max;
     }
     
-    public  double getMin(ArrayList<Double> theGrades) // Using main, static
+    public double getMin() // Using main, static
     {
         double min = theGrades.get(0);
         for (int i = 0; i < theGrades.size(); i++)
@@ -73,4 +73,6 @@ public class GradeCalculation
         
         return min;
     }
+    
+
 }

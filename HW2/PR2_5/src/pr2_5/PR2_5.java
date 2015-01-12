@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pr2_2;
-import pr2_1.Gerbil; // need project 1 for this project
+package pr2_5;
+
 /**
  *
  * @author katidid
  */
-public class PR2_2 {
+public class PR2_5 {
 
     /**
      * @param args the command line arguments
