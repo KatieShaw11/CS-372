@@ -27,72 +27,119 @@ public class CookieInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        samoaVar = new javax.swing.JButton();
+        chocChipVar = new javax.swing.JButton();
+        thinMintVar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Buy Samoa");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        samoaVar.setText("Buy Samoa");
+        samoaVar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                samoaVarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Buy Choc Chip");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        chocChipVar.setText("Buy Choc Chip");
+        chocChipVar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                chocChipVarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Buy Thin Mint");
+        thinMintVar.setText("Buy Thin Mint");
+        thinMintVar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                thinMintVarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Profits");
+
+        jLabel2.setText("Profits");
+
+        jLabel3.setText("Profits");
+
+        jLabel4.setText("Total Profits");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jButton3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(38, 38, 38))
+                        .addComponent(thinMintVar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(samoaVar)
+                        .addGap(18, 18, 18)
+                        .addComponent(chocChipVar)
+                        .addGap(38, 38, 38))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
+                    .addComponent(chocChipVar)
+                    .addComponent(thinMintVar)
+                    .addComponent(samoaVar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void samoaVarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samoaVarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        Transaction.buySamoa();
+        jLabel2.setText("$" + Transaction.getSamoaCash() + " in profits.");
+        int totalCash = Transaction.getThinCash()+Transaction.getChocCash()+Transaction.getSamoaCash();
+        jLabel4.setText("$" + totalCash + " in total profits.");
+    }//GEN-LAST:event_samoaVarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void chocChipVarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chocChipVarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        Transaction.buyChocChip();
+        jLabel3.setText("$" + Transaction.getChocCash() + " in profits.");
+        int totalCash = Transaction.getThinCash()+Transaction.getChocCash()+Transaction.getSamoaCash();
+        jLabel4.setText("$" + totalCash + " in total profits.");
+    }//GEN-LAST:event_chocChipVarActionPerformed
+
+    private void thinMintVarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thinMintVarActionPerformed
+        // TODO add your handling code here:
+        Transaction.buyThinMint();
+        jLabel1.setText("$" + Transaction.getThinCash() + " in profits.");
+        int totalCash = Transaction.getThinCash()+Transaction.getChocCash()+Transaction.getSamoaCash();
+        jLabel4.setText("$" + totalCash + " in total profits.");
+    }//GEN-LAST:event_thinMintVarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,9 +177,12 @@ public class CookieInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton chocChipVar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton samoaVar;
+    private javax.swing.JButton thinMintVar;
     // End of variables declaration//GEN-END:variables
 }

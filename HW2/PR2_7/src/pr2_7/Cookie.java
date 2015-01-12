@@ -15,29 +15,21 @@ public class Cookie
 {
     private String type;
     
-    
+    /**
+     * 
+     * @param Type 
+     */
     public Cookie(String Type)  
     { 
         type = Type;
     }
     
-    public int getPrice()
+    /**
+     * 
+     * @return 
+     */
+    public String getType()
     {
-        if (type == "Samoa")
-        {
-            return 4;
-        }
-        else if (type == "Thin Mint")
-        {
-            return 3;
-        }
-        else if (type == "Chocolate Chip")
-        {
-            return 5;
-        }
-        else
-        {
-            return 0;
-        }
+       return type;
     }
 }
