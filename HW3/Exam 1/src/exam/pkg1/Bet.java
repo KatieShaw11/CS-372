@@ -12,7 +12,7 @@ package exam.pkg1;
 public class Bet 
 {
     private int amount;
-    private int forWhichOutcome; // 1: <7; 2: >7; 3: =7
+    private int forWhichOutcome; // 6: <7; 8: >7; 7: =7
     
     public Bet()
     {

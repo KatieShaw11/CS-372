@@ -32,16 +32,11 @@ public class UnderOverGame extends javax.swing.JFrame {
         buttonGroup3 = new javax.swing.ButtonGroup();
         jButton1 = new javax.swing.JButton();
         P1BetText = new javax.swing.JTextField();
-        P2BetText = new javax.swing.JTextField();
         WinnerLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         P1MoneyLabel = new javax.swing.JLabel();
-        P2MoneyLabel = new javax.swing.JLabel();
         ChangeP1Button = new javax.swing.JButton();
-        ChangeP2Button = new javax.swing.JButton();
         P1LoginText = new javax.swing.JTextField();
-        P2LoginText = new javax.swing.JTextField();
         Di1Label = new javax.swing.JLabel();
         Di2Label = new javax.swing.JLabel();
 
@@ -61,22 +56,11 @@ public class UnderOverGame extends javax.swing.JFrame {
             }
         });
 
-        P2BetText.setEnabled(false);
-        P2BetText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                P2BetTextActionPerformed(evt);
-            }
-        });
-
         WinnerLabel.setText("___ won!");
 
         jLabel1.setText("Player 1 bets:");
 
-        jLabel2.setText("Player 2 bets:");
-
         P1MoneyLabel.setText("Player 1 current money:");
-
-        P2MoneyLabel.setText("Player 2 current money:");
 
         ChangeP1Button.setText("Change Player");
         ChangeP1Button.addActionListener(new java.awt.event.ActionListener() {
@@ -85,24 +69,10 @@ public class UnderOverGame extends javax.swing.JFrame {
             }
         });
 
-        ChangeP2Button.setText("Change Player");
-        ChangeP2Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChangeP2ButtonActionPerformed(evt);
-            }
-        });
-
         P1LoginText.setText("Player1");
         P1LoginText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 P1LoginTextActionPerformed(evt);
-            }
-        });
-
-        P2LoginText.setText("Player2");
-        P2LoginText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                P2LoginTextActionPerformed(evt);
             }
         });
 
@@ -121,21 +91,11 @@ public class UnderOverGame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(P1LoginText)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(P2LoginText))
-                            .addComponent(ChangeP2Button))
-                        .addGap(56, 56, 56))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(Di1Label)
-                        .addGap(38, 38, 38)
-                        .addComponent(Di2Label)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(4, 4, 4)
+                .addComponent(Di1Label)
+                .addGap(38, 38, 38)
+                .addComponent(Di2Label)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -155,43 +115,28 @@ public class UnderOverGame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(P1MoneyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(P2MoneyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(P2BetText, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(93, 93, 93))
+                .addGap(144, 267, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addContainerGap(12, Short.MAX_VALUE)
                         .addComponent(ChangeP1Button)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(P1LoginText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(P1MoneyLabel))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ChangeP2Button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(P2LoginText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Di2Label)
                             .addComponent(Di1Label))
-                        .addGap(18, 18, 18)
-                        .addComponent(P2MoneyLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                        .addGap(40, 40, 40)))
+                .addComponent(jLabel1)
                 .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(P1BetText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(P2BetText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(P1BetText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -209,35 +154,23 @@ public class UnderOverGame extends javax.swing.JFrame {
         Di1Label.setText("Di 1: " + Di1);
         int Di2 = roller.getDi2();
         Di2Label.setText("Di 2: " + Di2);
-        
-        //cashingInBets(Di1, Di2, __player1);
+        Player player1= new Player("John");
+        cashingInBets(Di1, Di2, player1);
+        refresh(player1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void P1BetTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P1BetTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_P1BetTextActionPerformed
 
-    private void P2BetTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P2BetTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_P2BetTextActionPerformed
-
     private void P1LoginTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P1LoginTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_P1LoginTextActionPerformed
-
-    private void P2LoginTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P2LoginTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_P2LoginTextActionPerformed
 
     private void ChangeP1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangeP1ButtonActionPerformed
         // TODO add your handling code here:
         P1BetText.enable();
     }//GEN-LAST:event_ChangeP1ButtonActionPerformed
-
-    private void ChangeP2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangeP2ButtonActionPerformed
-        // TODO add your handling code here:
-        P2BetText.enable();
-    }//GEN-LAST:event_ChangeP2ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,14 +206,20 @@ public class UnderOverGame extends javax.swing.JFrame {
             }
         });
     }
+    /**
+     * 
+     * @param d1
+     * @param d2
+     * @param player 
+     */
     
     public void cashingInBets(int d1, int d2, Player player)
     {
+        int playerAmount = player.getAmount();
+        int playerBet = player.getBet().getAmount();
+        
         if (d1 + d2 < 7)
         {
-            int playerAmount = player.getAmount();
-            int playerBet = player.getBet().getAmount();
-            
             if (player.getBet().getBetOutcome() <= 7)
             { 
                 player.setAmount(playerAmount+=playerBet);
@@ -292,33 +231,51 @@ public class UnderOverGame extends javax.swing.JFrame {
         }
         else if (d1 + d2 > 7)
         {
-            // Give betmoney to people with more than seven
-            // Take away others
+            if (player.getBet().getBetOutcome() >= 7)
+            { 
+                player.setAmount(playerAmount+=playerBet);
+            }
+            else
+            {
+                player.setAmount(playerAmount-=playerBet);
+            }
         }
         else
         {
-            // Give 4X money to people with 7
-            // Take away others
+            if (player.getBet().getBetOutcome() == 7)
+            { 
+                player.setAmount(playerAmount+=(playerBet*4));
+            }
+            else
+            {
+                player.setAmount(playerAmount-=(playerBet*4));
+            }
         }
+    }
+    /**
+     * 
+     */
+    public void refresh(Player p1) // a method used to refresh the page, in a sense, after
+            // bets are chashed and so forth; so, updating the amounts, clearing
+            // the bet texts, etc.
+    {
+        P1BetText.setText(null);
+        P1MoneyLabel.setText("P1 money");
+        WinnerLabel.setText("who's the winner?");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ChangeP1Button;
-    private javax.swing.JButton ChangeP2Button;
     private javax.swing.JLabel Di1Label;
     private javax.swing.JLabel Di2Label;
     private javax.swing.JTextField P1BetText;
     private javax.swing.JTextField P1LoginText;
     private javax.swing.JLabel P1MoneyLabel;
-    private javax.swing.JTextField P2BetText;
-    private javax.swing.JTextField P2LoginText;
-    private javax.swing.JLabel P2MoneyLabel;
     private javax.swing.JLabel WinnerLabel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
