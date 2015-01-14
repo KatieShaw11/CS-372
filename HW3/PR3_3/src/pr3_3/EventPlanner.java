@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package pr3_3;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.DefaultListModel;
 
 
@@ -176,6 +179,17 @@ public class EventPlanner extends javax.swing.JFrame {
         //econtroller.addEvent(newEvent);
         ((DefaultListModel)ListOfEvents.getModel()).addElement(newEvent);
         clearTextFields();
+        try
+        {
+            File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
+            FileWriter writer = new FileWriter(outFile, true);
+            econtroller.outputToFile(newEvent, writer);
+            writer.close();
+        }
+        catch(IOException ex)
+        {
+            System.out.println("Didn't make file");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void LocationTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocationTextFieldActionPerformed

@@ -6,6 +6,7 @@
 package pr3_3;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -17,20 +18,15 @@ public class EventsController
     
     private static ArrayList<Event> eventList= new ArrayList <Event>();
     
-    public static void outputToFile()
+    public static void outputToFile(Event newEvent, FileWriter writer)
     {
         try
         {
-            File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
-            FileWriter writer = new FileWriter(outFile);
-            for (int i = 0; i < eventList.size(); i++)
-            {
-                writer.write(eventList.get(i).toString());
-            }
+            writer.write(newEvent.toString() + "\n");
         }
-        catch(IllegalArgumentException ex)
+        catch(IOException ex)
         {
-            
+            System.out.println("Didn't output.");
         }
     }
     
