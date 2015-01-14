@@ -38,6 +38,6 @@ public class Event
     @Override
     public String toString()
     {
-        return String.format("%s at %s", name, location);
+        return String.format("%s at %s, on %d / %d / %d", name, location, month, date, year);
     }
 }

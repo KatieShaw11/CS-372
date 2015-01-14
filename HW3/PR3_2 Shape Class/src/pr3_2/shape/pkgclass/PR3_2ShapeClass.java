@@ -35,7 +35,15 @@ public class PR3_2ShapeClass {
      */
     public static void main(String[] args) 
     {
-        
+        Triangle triangle1;
+        try
+        {
+            triangle1 = new Triangle(1,2,3);
+        }
+        catch(InvalidGeometryException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
     }
     
 }

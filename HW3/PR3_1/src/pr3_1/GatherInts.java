@@ -1,10 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Write a console program that asks the user for 10 integers, then outputs the 
+max, min, and average. Use Exception Handling to handle the case where the user 
+doesn’t pass in an integer value (for Scanner.nextInt()).
  */
 package pr3_1;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -14,30 +15,52 @@ import java.util.*;
 public class GatherInts 
 {
     private ArrayList<Integer> integerList = new ArrayList<Integer>();
-    
+    /**
+     * 
+     */
     public GatherInts()
     {
         
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Integer> getIntList()
     {
 
         return integerList;       
     }
-    
+    /**
+     * 
+     * @param str
+     * @return
+     * @throws IllegalArgumentException 
+     */
     public int parseTheInt(String str) throws IllegalArgumentException
     {
+        int value = 0;
         if (str.isEmpty())
         {
             throw new IllegalArgumentException("Empty text is not legal");
         }
+        try
+        {
+            value = Integer.parseInt(str);
+        }
+        catch(NumberFormatException e)
+        {
+            //JOptionPane.showMessageDialog(this, e.getMessage());
+        }
         
-        int value = Integer.parseInt(str);
         return value;
         
     }
-    
+    /**
+     * 
+     * @param newInt
+     * @throws IllegalArgumentException 
+     */
     public void addInt(int newInt) throws IllegalArgumentException
     {
         if (newInt == -1)
@@ -47,12 +70,19 @@ public class GatherInts
         integerList.add(newInt);
         
     }
-    
+    /**
+     * 
+     * @param i
+     * @return 
+     */
     public int getOneInt(int i) 
     { 
         return integerList.get(i); 
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public double calcAverage() // Using main, static
     {
         double average = 0;
@@ -65,7 +95,10 @@ public class GatherInts
         return average;
         
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public int getMax() // Using main, static
     {
         int max = integerList.indexOf(0);
@@ -77,7 +110,10 @@ public class GatherInts
         
         return max;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public int getMin() // Using main, static
     {
         int min = integerList.get(0);

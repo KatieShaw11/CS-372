@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Write a console program that asks the user for 10 integers, then outputs the 
+max, min, and average. Use Exception Handling to handle the case where the user 
+doesn’t pass in an integer value (for Scanner.nextInt()).
  */
 package pr3_1;
 import pr3_1.*;
@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author katidid
+ * @author kshaw
  */
 public class TenIntegers extends javax.swing.JFrame {
 
@@ -131,27 +131,28 @@ public class TenIntegers extends javax.swing.JFrame {
              inputField.disable();
              theMessageField.setText("You've entered 10 ints! We're full.");
         }
-        else{
-        String text = inputField.getText(); // example String
-        
-        int value = calculator.parseTheInt(text);
-        try 
+        else
         {
-            calculator.addInt(value);
-        }
-        catch (IllegalArgumentException ex)
-        {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
-        averageLabel.setText("Average:" + calculator.calcAverage());
-        minLabel.setText("Minimum: " + calculator.getMin());
-        maxLabel.setText("Maximum: " + calculator.getMax());
+            String text = inputField.getText(); // example String
         
-        int intsLeft = 10 - (calculator.getIntList().size());
+            int value = calculator.parseTheInt(text);
+            try 
+            {
+                calculator.addInt(value);
+            }
+            catch (IllegalArgumentException ex)
+            {
+               JOptionPane.showMessageDialog(this, ex.getMessage());
+            }
+            averageLabel.setText("Average:" + calculator.calcAverage());
+            minLabel.setText("Minimum: " + calculator.getMin());
+            maxLabel.setText("Maximum: " + calculator.getMax());
         
-        theMessageField.setText(intsLeft + " integers left to enter.");
+            int intsLeft = 10 - (calculator.getIntList().size());
         
-        inputField.setText(null); // clears text to type a new number
+            theMessageField.setText(intsLeft + " integers left to enter.");
+        
+            inputField.setText(null); // clears text to type a new number
         }
     }//GEN-LAST:event_buttonActionPerformed
 

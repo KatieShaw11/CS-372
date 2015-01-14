@@ -34,11 +34,17 @@ public class EventPlanner extends javax.swing.JFrame {
         ListOfEvents = new javax.swing.JList();
         NameTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        LocationTextField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        DateTextField = new javax.swing.JTextField();
+        MonthTextField = new javax.swing.JTextField();
+        YearTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setBackground(new java.awt.Color(255, 153, 204));
-        jButton1.setFont(new java.awt.Font("Snell Roundhand", 0, 24)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Snell Roundhand", 0, 36)); // NOI18N
         jButton1.setText("Save the Date");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,7 +71,38 @@ public class EventPlanner extends javax.swing.JFrame {
             });
             jScrollPane1.setViewportView(ListOfEvents);
 
+            jLabel1.setFont(new java.awt.Font("Snell Roundhand", 0, 22)); // NOI18N
             jLabel1.setText("Name of event");
+
+            LocationTextField.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    LocationTextFieldActionPerformed(evt);
+                }
+            });
+
+            jLabel2.setFont(new java.awt.Font("Snell Roundhand", 0, 22)); // NOI18N
+            jLabel2.setText("Month / Day / Year");
+
+            DateTextField.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    DateTextFieldActionPerformed(evt);
+                }
+            });
+
+            MonthTextField.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    MonthTextFieldActionPerformed(evt);
+                }
+            });
+
+            YearTextField.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    YearTextFieldActionPerformed(evt);
+                }
+            });
+
+            jLabel3.setFont(new java.awt.Font("Snell Roundhand", 0, 22)); // NOI18N
+            jLabel3.setText("Location");
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
@@ -78,22 +115,46 @@ public class EventPlanner extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(169, 169, 169)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(46, 46, 46)
+                            .addGap(33, 33, 33)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(LocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(31, 31, 31)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(MonthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(DateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(YearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(169, 169, 169)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap(42, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
+                    .addContainerGap(29, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(MonthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(YearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
@@ -105,13 +166,42 @@ public class EventPlanner extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String nameText = NameTextField.getText();
-        Event newEvent = new Event(nameText);
+        String name = NameTextField.getText();
+        String loc = LocationTextField.getText();
+        int mon = Integer.parseInt(MonthTextField.getText().toString());
+        int date = Integer.parseInt(DateTextField.getText());
+        int year = Integer.parseInt(YearTextField.getText());
+        
+        Event newEvent = new Event(name, loc, mon, date, year);
         //econtroller.addEvent(newEvent);
         ((DefaultListModel)ListOfEvents.getModel()).addElement(newEvent);
+        clearTextFields();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void LocationTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocationTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LocationTextFieldActionPerformed
+
+    private void DateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DateTextFieldActionPerformed
+
+    private void MonthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MonthTextFieldActionPerformed
+
+    private void YearTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YearTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_YearTextFieldActionPerformed
+
+    public void clearTextFields()
+    {
+        YearTextField.setText(null);
+        DateTextField.setText(null);
+        MonthTextField.setText(null);
+        LocationTextField.setText(null);
+        NameTextField.setText(null);       
+    }
     /**
      * @param args the command line arguments
      */
@@ -148,10 +238,16 @@ public class EventPlanner extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField DateTextField;
     private javax.swing.JList ListOfEvents;
+    private javax.swing.JTextField LocationTextField;
+    private javax.swing.JTextField MonthTextField;
     private javax.swing.JTextField NameTextField;
+    private javax.swing.JTextField YearTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
