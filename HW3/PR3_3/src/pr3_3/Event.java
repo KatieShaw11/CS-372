@@ -34,4 +34,10 @@ public class Event
         date = 0;
         year = 0;
     }
+    
+    @Override
+    public String toString()
+    {
+        return String.format("%s at %s", name, location);
+    }
 }

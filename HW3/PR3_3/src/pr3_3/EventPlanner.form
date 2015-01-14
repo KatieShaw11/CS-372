@@ -87,7 +87,7 @@
         <Component class="javax.swing.JList" name="ListOfEvents">
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new DefaultListModel&lt;Event&gt;()&#xa;{&#xa;    public int getSize(){&#xa;        return econtroller.getNumEvents();&#xa;    }&#xa;    public Event getElementAt(int i) {&#xa;        return econtroller.getEvent(i);&#xa;    }&#xa;    public void addElement(Event e) {&#xa;        super.addElement(e); &#xa;        econtroller.addEvent(e);&#xa;    }&#xa;    public void add(int i, Double f) {&#xa;        super.add(i,f);&#xa;        econtroller.addEvent(e);&#xa;    }&#xa;}" type="code"/>
+              <Connection code="new DefaultListModel&lt;Event&gt;()&#xa;{&#xa;    public int getSize(){&#xa;        return econtroller.getNumEvents();&#xa;    }&#xa;    public Event getElementAt(int i) {&#xa;        return econtroller.getEvent(i);&#xa;    }&#xa;    public void addElement(Event e) {&#xa;        super.addElement(e); &#xa;        econtroller.addEvent(e);&#xa;    }&#xa;    public void add(int i, Event e) {&#xa;        super.add(i,e);&#xa;        econtroller.addEvent(e);&#xa;    }&#xa;}" type="code"/>
             </Property>
           </Properties>
         </Component>

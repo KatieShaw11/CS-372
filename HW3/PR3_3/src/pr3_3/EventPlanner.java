@@ -58,8 +58,8 @@ public class EventPlanner extends javax.swing.JFrame {
                     super.addElement(e);
                     econtroller.addEvent(e);
                 }
-                public void add(int i, Double f) {
-                    super.add(i,f);
+                public void add(int i, Event e) {
+                    super.add(i,e);
                     econtroller.addEvent(e);
                 }
             });
@@ -108,7 +108,8 @@ public class EventPlanner extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nameText = NameTextField.getText();
         Event newEvent = new Event(nameText);
-        econtroller.addEvent(newEvent);
+        //econtroller.addEvent(newEvent);
+        ((DefaultListModel)ListOfEvents.getModel()).addElement(newEvent);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
