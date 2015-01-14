@@ -5,6 +5,7 @@
  */
 package pr3_3;
 import java.io.File;
+import java.util.*;
 
 /**
  *
@@ -12,12 +13,18 @@ import java.io.File;
  */
 public class EventsController 
 {
+    
+    private static ArrayList<Event> eventList= new ArrayList <Event>();
+    
     public static void outputToFile()
     {
-        File f = new File("/Users/katidid/desktop");
-        
-        
-        
+        File outFile = new File("/Users/katidid/desktop");
+  
+    }
+    
+    public static void addEvent(Event newEvent)
+    {
+        eventList.add(newEvent);
     }
     
 }

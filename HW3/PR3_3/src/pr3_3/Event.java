@@ -14,15 +14,24 @@ package pr3_3;
  */
 public class Event 
 {
-    private String name, location, month;
-    private int date, year;
+    private String name, location;
+    private int date, year, month;
     
-    public Event (String Name, String Loc, String Month, int Date, int Year)
+    public Event (String Name, String Loc, int Month, int Date, int Year)
     {
         name = Name;
         location = Loc;
         month = Month;
         date = Date;
         year = Year;
+    }
+    
+    public Event (String Name)
+    {
+        name = Name;
+        location = "default";
+        month = 0;
+        date = 0;
+        year = 0;
     }
 }

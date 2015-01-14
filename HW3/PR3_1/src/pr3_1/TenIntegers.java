@@ -126,6 +126,12 @@ public class TenIntegers extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
+        if (calculator.getIntList().size() >= 9)
+        {
+             inputField.disable();
+             theMessageField.setText("You've entered 10 ints! We're full.");
+        }
+        else{
         String text = inputField.getText(); // example String
         
         int value = calculator.parseTheInt(text);
@@ -137,7 +143,6 @@ public class TenIntegers extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-        
         averageLabel.setText("Average:" + calculator.calcAverage());
         minLabel.setText("Minimum: " + calculator.getMin());
         maxLabel.setText("Maximum: " + calculator.getMax());
@@ -147,6 +152,7 @@ public class TenIntegers extends javax.swing.JFrame {
         theMessageField.setText(intsLeft + " integers left to enter.");
         
         inputField.setText(null); // clears text to type a new number
+        }
     }//GEN-LAST:event_buttonActionPerformed
 
     private void inputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputFieldActionPerformed
