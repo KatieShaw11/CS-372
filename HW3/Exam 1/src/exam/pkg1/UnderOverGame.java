@@ -39,6 +39,8 @@ public class UnderOverGame extends javax.swing.JFrame {
         P1LoginText = new javax.swing.JTextField();
         Di1Label = new javax.swing.JLabel();
         Di2Label = new javax.swing.JLabel();
+        PlayerNameLabel = new javax.swing.JLabel();
+        BetOutcomeText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,63 +82,75 @@ public class UnderOverGame extends javax.swing.JFrame {
 
         Di2Label.setText("Di 2");
 
+        PlayerNameLabel.setText("NAME");
+
+        BetOutcomeText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BetOutcomeTextActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ChangeP1Button)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(P1LoginText)))
-                .addGap(4, 4, 4)
-                .addComponent(Di1Label)
-                .addGap(38, 38, 38)
-                .addComponent(Di2Label)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ChangeP1Button)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(P1LoginText)))
+                        .addGap(4, 4, 4)
+                        .addComponent(Di1Label)
+                        .addGap(38, 38, 38)
+                        .addComponent(Di2Label))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(191, 191, 191)
                         .addComponent(WinnerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(115, 115, 115)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                            .addComponent(P1BetText)))
+                            .addComponent(P1BetText))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BetOutcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(P1MoneyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(144, 267, Short.MAX_VALUE))
+                        .addComponent(P1MoneyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PlayerNameLabel)))
+                .addGap(144, 172, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(12, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(ChangeP1Button)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(P1LoginText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
+                        .addGap(28, 28, 28)
+                        .addComponent(PlayerNameLabel)
+                        .addGap(18, 18, 18)
                         .addComponent(P1MoneyLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Di2Label)
                             .addComponent(Di1Label))
                         .addGap(40, 40, 40)))
                 .addComponent(jLabel1)
                 .addGap(7, 7, 7)
-                .addComponent(P1BetText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(P1BetText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BetOutcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -155,8 +169,19 @@ public class UnderOverGame extends javax.swing.JFrame {
         int Di2 = roller.getDi2();
         Di2Label.setText("Di 2: " + Di2);
         Player player1= new Player("John");
+        
+        int betPlayerOutcome = Integer.parseInt(BetOutcomeText.getText());
+        int betAmount = Integer.parseInt(P1BetText.getText());
+        Bet bet = new Bet(betAmount, betPlayerOutcome);
+        player1.addBet(bet);
+        
         cashingInBets(Di1, Di2, player1);
-        refresh(player1);
+        //refresh(player1);
+        
+        P1BetText.setText(null); //clears
+        P1MoneyLabel.setText("Current money: " + player1.getAmount());
+        WinnerLabel.setText("who's the winner?");
+        PlayerNameLabel.setText(player1.getName());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void P1BetTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P1BetTextActionPerformed
@@ -171,6 +196,10 @@ public class UnderOverGame extends javax.swing.JFrame {
         // TODO add your handling code here:
         P1BetText.enable();
     }//GEN-LAST:event_ChangeP1ButtonActionPerformed
+
+    private void BetOutcomeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BetOutcomeTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BetOutcomeTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,18 +288,21 @@ public class UnderOverGame extends javax.swing.JFrame {
             // bets are chashed and so forth; so, updating the amounts, clearing
             // the bet texts, etc.
     {
-        P1BetText.setText(null);
-        P1MoneyLabel.setText("P1 money");
+        P1BetText.setText(null); //clears
+        P1MoneyLabel.setText("Current money: " + p1.getAmount());
         WinnerLabel.setText("who's the winner?");
+        PlayerNameLabel.setText(p1.getName());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField BetOutcomeText;
     private javax.swing.JButton ChangeP1Button;
     private javax.swing.JLabel Di1Label;
     private javax.swing.JLabel Di2Label;
     private javax.swing.JTextField P1BetText;
     private javax.swing.JTextField P1LoginText;
     private javax.swing.JLabel P1MoneyLabel;
+    private javax.swing.JLabel PlayerNameLabel;
     private javax.swing.JLabel WinnerLabel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;

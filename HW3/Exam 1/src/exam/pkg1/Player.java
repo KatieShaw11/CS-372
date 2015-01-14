@@ -48,5 +48,10 @@ public class Player
     {
         return currentMoney;
     }
+    
+    public String getName()
+    {
+        return loginName;
+    }
             
 }
