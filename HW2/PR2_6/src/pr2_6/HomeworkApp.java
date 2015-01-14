@@ -159,7 +159,6 @@ public class HomeworkApp extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         String text = jTextField1.getText();; // example String
         Double value = Double.parseDouble(text);
         //calculator.addGrade(value);
