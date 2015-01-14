@@ -27,4 +27,14 @@ public class EventsController
         eventList.add(newEvent);
     }
     
+    public static int getNumEvents()
+    {
+        return eventList.size();
+    }
+    
+    public static Event getEvent(int i)
+    {
+        return eventList.get(i);
+    }
+    
 }
