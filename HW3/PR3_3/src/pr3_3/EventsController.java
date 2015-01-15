@@ -18,6 +18,11 @@ public class EventsController
     
     private static ArrayList<Event> eventList= new ArrayList <Event>();
     
+    /**
+     * 
+     * @param newEvent
+     * @param writer 
+     */
     public static void outputToFile(Event newEvent, FileWriter writer)
     {
         try
@@ -30,16 +35,29 @@ public class EventsController
         }
     }
     
+    /**
+     * 
+     * @param newEvent 
+     */
     public static void addEvent(Event newEvent)
     {
         eventList.add(newEvent);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public static int getNumEvents()
     {
         return eventList.size();
     }
     
+    /**
+     * 
+     * @param i
+     * @return 
+     */
     public static Event getEvent(int i)
     {
         return eventList.get(i);

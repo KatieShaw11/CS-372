@@ -17,6 +17,14 @@ public class Event
     private String name, location;
     private int date, year, month;
     
+    /**
+     * 
+     * @param Name
+     * @param Loc
+     * @param Month
+     * @param Date
+     * @param Year 
+     */
     public Event (String Name, String Loc, int Month, int Date, int Year)
     {
         name = Name;
@@ -26,6 +34,10 @@ public class Event
         year = Year;
     }
     
+    /**
+     * 
+     * @param Name 
+     */
     public Event (String Name)
     {
         name = Name;
@@ -35,6 +47,10 @@ public class Event
         year = 0;
     }
     
+    /**
+     * 
+     * @return 
+     */
     @Override
     public String toString()
     {

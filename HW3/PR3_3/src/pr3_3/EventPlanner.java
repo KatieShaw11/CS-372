@@ -12,7 +12,7 @@ import javax.swing.DefaultListModel;
 
 /**
  *
- * @author katidid
+ * @author kshaw
  */
 public class EventPlanner extends javax.swing.JFrame {
     EventsController econtroller = new EventsController();
@@ -43,8 +43,11 @@ public class EventPlanner extends javax.swing.JFrame {
         MonthTextField = new javax.swing.JTextField();
         YearTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        MessageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jButton1.setBackground(new java.awt.Color(255, 153, 204));
         jButton1.setFont(new java.awt.Font("Snell Roundhand", 0, 36)); // NOI18N
@@ -107,14 +110,15 @@ public class EventPlanner extends javax.swing.JFrame {
             jLabel3.setFont(new java.awt.Font("Snell Roundhand", 0, 22)); // NOI18N
             jLabel3.setText("Location");
 
+            MessageLabel.setFont(new java.awt.Font("Muna", 1, 12)); // NOI18N
+            MessageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            MessageLabel.setText(".");
+            MessageLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(108, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(128, 128, 128))
                 .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -139,14 +143,20 @@ public class EventPlanner extends javax.swing.JFrame {
                                     .addComponent(YearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(169, 169, 169)
+                            .addGap(89, 89, 89)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(109, 109, 109)
+                            .addComponent(MessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(133, 133, 133)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap(29, Short.MAX_VALUE)
+                    .addContainerGap(38, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
                         .addComponent(jLabel2)
@@ -158,37 +168,55 @@ public class EventPlanner extends javax.swing.JFrame {
                         .addComponent(DateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(MonthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(YearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MessageLabel)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
             );
 
             pack();
         }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String name = NameTextField.getText();
-        String loc = LocationTextField.getText();
-        int mon = Integer.parseInt(MonthTextField.getText().toString());
-        int date = Integer.parseInt(DateTextField.getText());
-        int year = Integer.parseInt(YearTextField.getText());
+        try{
+            String name = NameTextField.getText();
+            String loc = LocationTextField.getText();
+            int mon = Integer.parseInt(MonthTextField.getText().toString());
+            int date = Integer.parseInt(DateTextField.getText());
+            int year = Integer.parseInt(YearTextField.getText());
         
-        Event newEvent = new Event(name, loc, mon, date, year);
-        //econtroller.addEvent(newEvent);
-        ((DefaultListModel)ListOfEvents.getModel()).addElement(newEvent);
-        clearTextFields();
-        try
-        {
-            File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
-            FileWriter writer = new FileWriter(outFile, true);
-            econtroller.outputToFile(newEvent, writer);
-            writer.close();
+            Event newEvent = new Event(name, loc, mon, date, year);
+            //econtroller.addEvent(newEvent);
+            ((DefaultListModel)ListOfEvents.getModel()).addElement(newEvent);
+            clearTextFields();
+            try
+            {
+                File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
+                FileWriter writer = new FileWriter(outFile, true);
+                econtroller.outputToFile(newEvent, writer);
+                writer.close();
+            }
+            catch(IOException ex)
+            {
+                MessageLabel.setText("Didn't make file");
+            }
         }
-        catch(IOException ex)
+        catch(NumberFormatException e) // If they don't fill out all the blanks properly
         {
-            System.out.println("Didn't make file");
+            if (allFieldsFilled() == true)
+            {
+                MessageLabel.setText("Please don't mix numbers and words."); 
+            }
+            else
+            {
+                MessageLabel.setText("Please enter text in all five boxes.");
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -208,13 +236,30 @@ public class EventPlanner extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_YearTextFieldActionPerformed
 
-    public void clearTextFields()
+    /**
+     * 
+     */
+    public void clearTextFields() // To make the interface more clean
     {
         YearTextField.setText(null);
         DateTextField.setText(null);
         MonthTextField.setText(null);
         LocationTextField.setText(null);
-        NameTextField.setText(null);       
+        NameTextField.setText(null); 
+        MessageLabel.setText(null);
+    }
+    /**
+     * 
+     * @return 
+     */
+    public boolean allFieldsFilled() // So the exception message can be specific 
+            // about the type of error it's encountering (wrong text or no text)
+    {
+        return YearTextField.getText().length() != 0 && 
+                DateTextField.getText().length() != 0 &&
+                MonthTextField.getText().length() != 0 &&
+                LocationTextField.getText().length() != 0 &&
+                NameTextField.getText().length() != 0;
     }
     /**
      * @param args the command line arguments
@@ -255,6 +300,7 @@ public class EventPlanner extends javax.swing.JFrame {
     private javax.swing.JTextField DateTextField;
     private javax.swing.JList ListOfEvents;
     private javax.swing.JTextField LocationTextField;
+    private javax.swing.JLabel MessageLabel;
     private javax.swing.JTextField MonthTextField;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JTextField YearTextField;
