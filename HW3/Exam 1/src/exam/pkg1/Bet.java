@@ -35,4 +35,15 @@ public class Bet
     {
         return forWhichOutcome;
     }
+    public void setBetOutcome(int num) throws IllegalArgumentException
+    {
+        if (num < 1 || num > 3)
+            throw new IllegalArgumentException ("Enter 1, 2, or 3, please.");
+        if (num == 1)
+            forWhichOutcome = 6;
+        else if (num == 2)
+            forWhichOutcome = 8;
+        else
+            forWhichOutcome = 7;
+    }
 }

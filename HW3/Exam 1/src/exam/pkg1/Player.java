@@ -53,5 +53,20 @@ public class Player
     {
         return loginName;
     }
+    
+    boolean won(int DiRoll) // acts as a boolean but with three options
+    {
+        if (DiRoll < 7 && currentBet.getBetOutcome() < 7
+                || DiRoll > 7 && currentBet.getBetOutcome() > 7
+                || DiRoll == 7 && currentBet.getBetOutcome() == 7) // if won
+        {
+            return true;
+        }
+        else
+        {
+           return false;
+        }
+
+    }
             
 }
