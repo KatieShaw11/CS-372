@@ -196,7 +196,10 @@ public class UnderOverGame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * 
+ * @param evt 
+ */
     private void MainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MainButtonActionPerformed
         //if(MainButton.getText() == "Log In")
         //{
@@ -216,15 +219,19 @@ public class UnderOverGame extends javax.swing.JFrame {
             Di2Label.setText("Di 2: " + Di2);
             //Player player1= new Player("John");
             
-            //int betOutcome = Integer.parseInt(BetOutcomeText.getText());
-            //try{
-                //player1.getBet().setBetOutcome(betOutcome);
-            //}
-
-            //catch(IllegalArgumentException ex)
-            //{
-               // MessageLabel.setText(ex.getMessage());
-            //}
+            
+            try{
+                int betOutcome = Integer.parseInt(BetOutcomeText.getText());
+                player1.getBet().setBetOutcome(betOutcome);
+            }
+            catch(NullPointerException e)
+            {
+                MessageLabel.setText(e.getMessage());
+            }
+            catch(IllegalArgumentException ex)
+            {
+               MessageLabel.setText(ex.getMessage());
+            }
             
         
             int betPlayerOutcome = Integer.parseInt(BetOutcomeText.getText());
