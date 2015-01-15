@@ -15,18 +15,27 @@ public class RollDice
 {
     private int di1;
     private int di2;
-    
+    /**
+     * 
+     */
     public RollDice()
     {
         Random rand = new Random();
         di1 = rand.nextInt(6)+1;
         di2 = rand.nextInt(6)+1;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public int getDi1()
     {
         return di1;
     }
+    /**
+     * 
+     * @return 
+     */
     public int getDi2()
     {
         return di2;

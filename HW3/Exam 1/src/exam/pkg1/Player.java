@@ -14,46 +14,78 @@ public class Player
     private String loginName;
     private int currentMoney;
     private Bet currentBet;
-    
+    /**
+     * 
+     */
     public Player()
     {
         loginName = "defaultName";
         currentMoney = 0;
     }
+    /**
+     * 
+     * @param name 
+     */
     public Player(String name) // the constuctor used for a brand new player
     {
         loginName = name;
         currentMoney = 500;
     }
+    /**
+     * 
+     * @param name
+     * @param money 
+     */
     public Player(String name, int money)
     {
         loginName = name;
         currentMoney = money;
     }
-    
+    /**
+     * 
+     * @param newBet 
+     */
     public void addBet(Bet newBet)
     {
         currentBet = newBet;
     }
+    /**
+     * 
+     * @return 
+     */
     public Bet getBet()
     {
         return currentBet;
     }
-    
+    /**
+     * 
+     * @param amount 
+     */
     public void setAmount(int amount)
     {
         currentMoney = amount;
     }
+    /**
+     * 
+     * @return 
+     */
     public int getAmount()
     {
         return currentMoney;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public String getName()
     {
         return loginName;
     }
-    
+    /**
+     * 
+     * @param DiRoll
+     * @return 
+     */
     boolean won(int DiRoll) // acts as a boolean but with three options
     {
         if (DiRoll < 7 && currentBet.getBetOutcome() < 7

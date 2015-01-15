@@ -13,28 +13,45 @@ public class Bet
 {
     private int amount;
     private int forWhichOutcome; // 6: <7; 8: >7; 7: =7
-    
+    /**
+     * 
+     */
     public Bet()
     {
         amount = 0;
         forWhichOutcome = 0;
     }
-    
+    /**
+     * 
+     * @param amount
+     * @param forWO 
+     */
     public Bet(int amount, int forWO)
     {
         this.amount = amount;
         forWhichOutcome = forWO;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public int getAmount()
     {
         return amount;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public int getBetOutcome()
     {
         return forWhichOutcome;
     }
+    /**
+     * 
+     * @param num
+     * @throws IllegalArgumentException 
+     */
     public void setBetOutcome(int num) throws IllegalArgumentException
     {
         if (num < 1 || num > 3)
