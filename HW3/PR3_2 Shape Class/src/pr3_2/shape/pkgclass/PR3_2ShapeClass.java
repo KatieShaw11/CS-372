@@ -67,6 +67,66 @@ public class PR3_2ShapeClass {
             break;
         }
     }
+    
+    /**
+     * 
+     */
+    public static void EllipseConstructor()
+    {
+        while (true)
+        {
+            Ellipse ellipse1;
+            System.out.println("Please enter the two radii of the ellipse, integers only.");
+            int a, b;
+            try
+            {
+                Scanner sc = new Scanner(System.in);
+                a = sc.nextInt();
+                b = sc.nextInt();
+                System.out.printf("a: %d; b: %d\n", a, b);
+                ellipse1 = new Ellipse(a, b);   
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.println("Invalid entry. Please start again, integers this time.");
+            }
+            break;
+        }
+    }
+    /**
+     *
+     */
+    public static void RectangleConstructor()
+    {
+        while (true)
+        {
+            Rectangle rec1;
+            System.out.println("Please enter the two side of the rectangle, integers only.");
+            int a, b;
+            try
+            {
+                Scanner sc = new Scanner(System.in);
+                a = sc.nextInt();
+                b = sc.nextInt();
+                System.out.printf("a: %d; b: %d\n", a, b);
+                rec1 = new Rectangle(a, b);   
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.println("Invalid entry. Please start again, integers this time.");
+            }
+            break;
+        }
+    }
+    
+    public static void continueQuestion()
+    {
+        System.out.println("Would you like to continue and create the next shape? y/n");
+        Scanner sc1 = new Scanner(System.in);
+        String answer = sc1.next();
+        if (answer == "n" || answer == "N")
+            System.exit(0);
+    }
     /**
      * @param args the command line arguments
      */
@@ -75,17 +135,16 @@ public class PR3_2ShapeClass {
         while(true)
         {
             TriangleConstuctor();
-            System.out.println("Triangle constructed. Well done.\n"); 
-                System.out.println("Would you like to continue and create a rectangle? y/n");
-                Scanner sc1 = new Scanner(System.in);
-                String answer = sc1.next();
-                if (answer == "n" || answer == "N")
-                    System.exit(0);
+            System.out.println("Triangle constructed. Well done.\n");
+            continueQuestion();
             
-            Scanner sc2 = new Scanner(System.in);
-             answer = sc2.next();
-            if (answer == "n" || answer == "N")
-                System.exit(0); 
+            RectangleConstructor();
+            System.out.println("Rectangle constructed. Well done.\n");
+            continueQuestion();
+            
+            EllipseConstructor();
+            System.out.println("Ellipse constructed. Well done.\n");
+            continueQuestion();
         }
     }
     

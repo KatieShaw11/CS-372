@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 
@@ -272,7 +273,13 @@ public class EventPlanner extends javax.swing.JFrame {
         return newEvent;
     }
     
-    
+    public ArrayList sortListByDate(ArrayList list)
+    {
+        ArrayList sortedArray = new ArrayList<Event>();
+        //if ()
+        
+        return sortedArray;
+    }
     
     /**
      * @param args the command line arguments
