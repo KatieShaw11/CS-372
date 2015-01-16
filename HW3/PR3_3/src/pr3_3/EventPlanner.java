@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
 import javax.swing.DefaultListModel;
 
 
@@ -50,7 +49,7 @@ public class EventPlanner extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 255));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         jButton1.setBackground(new java.awt.Color(255, 153, 204));
         jButton1.setFont(new java.awt.Font("Snell Roundhand", 0, 36)); // NOI18N
@@ -173,6 +172,7 @@ public class EventPlanner extends javax.swing.JFrame {
                 while ((line = reader.readLine()) != null) 
                 {
                     Event newEvent = parseNewEvent(line);
+                    
                     ((DefaultListModel)ListOfEvents.getModel()).addElement(newEvent);
                 }
             } 
@@ -242,26 +242,38 @@ public class EventPlanner extends javax.swing.JFrame {
                 LocationTextField.getText().length() != 0 &&
                 NameTextField.getText().length() != 0;
     }
-    
+    /**
+     * 
+     * @param line
+     * @return 
+     */
     public static Event parseNewEvent(String line)
     {
         Event newEvent = new Event();
         
         String phrase = line;
-        String delims = "[ ]+";
-        String[] tokens = phrase.split(delims);
+        String delims = " ";
+        String[] phrases = phrase.split(delims);
         
-        newEvent.setName(tokens[0]);
-        newEvent.setLocation(tokens[1]);
-        int month = Integer.parseInt(tokens[2]);
-        int date = Integer.parseInt(tokens[3]);
-        int year = Integer.parseInt(tokens[4]);
+        newEvent.setName(phrases[0]);
+        newEvent.setLocation(phrases[2]);
+        
+        String datesPhrase = phrases[4];
+        String delims2 = "/";
+        String[] dates = datesPhrase.split(delims2);
+        
+        int month = Integer.parseInt(dates[0]);
+        int date = Integer.parseInt(dates[1]);
+        int year = Integer.parseInt(dates[2]);
         newEvent.setMonth(month);
         newEvent.setDate(date);
         newEvent.setYear(year);
         
         return newEvent;
     }
+    
+    
+    
     /**
      * @param args the command line arguments
      */

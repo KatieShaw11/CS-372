@@ -34,7 +34,14 @@ public class Event
         date = 0;
         year = 0;             
     }
-    
+    /**
+     * 
+     * @param Name
+     * @param Loc
+     * @param Month
+     * @param Date
+     * @param Year 
+     */
     public Event (String Name, String Loc, int Month, int Date, int Year)
     {
         name = Name;
@@ -58,26 +65,42 @@ public class Event
     }
     // Accessors:
     
+    /**
+     * 
+     * @return 
+     */
     public int getYear()
     {
         return year;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public int getMonth()
     {
         return month;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public int getDate()
     {
         return date;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public String getName()
     {
         return name;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public String getLocation()
     {
         return location;
@@ -85,26 +108,42 @@ public class Event
     
     // Modifiers:
     
+    /**
+     * 
+     * @param Year 
+     */
     public void setYear(int Year)
     {
         year = Year;
     }
-    
+    /**
+     * 
+     * @param Mon 
+     */
     public void setMonth(int Mon)
     {
         month = Mon;
     }
-    
+    /**
+     * 
+     * @param Date 
+     */
     public void setDate(int Date)
     {
         date = Date;
     }
-    
+    /**
+     * 
+     * @param Name 
+     */
     public void setName(String Name)
     {
         name = Name;
     }
-    
+    /**
+     * 
+     * @param Loc 
+     */
     public void setLocation(String Loc)
     {
         location = Loc;
@@ -117,6 +156,6 @@ public class Event
     @Override
     public String toString()
     {
-        return String.format("%s at %s, on %d / %d / %d", name, location, month, date, year);
+        return String.format("%s at %s on %d/%d/%d", name, location, month, date, year);
     }
 }
