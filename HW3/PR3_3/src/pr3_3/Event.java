@@ -158,15 +158,4 @@ public class Event
     {
         return String.format("%s at %s on %d/%d/%d", name, location, month, date, year);
     }
-    
-    public int compareYears(Event comparestu) 
-    {
-        int compareYear=((Event)comparestu).getYear();
-        /* For Ascending order*/
-        return this.year-compareYear;
-
-        /* For Descending order do like this */
-        //return compareage-this.studentage;
-    }
- 
 }

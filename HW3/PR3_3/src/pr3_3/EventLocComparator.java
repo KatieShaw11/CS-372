@@ -11,7 +11,7 @@ import java.util.Comparator;
  *
  * @author kshaw
  */
-public class EventDateComparator implements Comparator<Event>
+public class EventLocComparator implements Comparator<Event>
 {
     /**
      * 
@@ -22,15 +22,6 @@ public class EventDateComparator implements Comparator<Event>
     @Override
     public int compare(Event e1, Event e2) 
     {
-        int c = e1.getYear() - e2.getYear();
-        if (c==0)
-        {
-            c = e1.getMonth() - e2.getMonth();
-            if (c == 0)
-            {
-                c = e1.getDate() - e2.getDate();
-            }
-        }
-        return c;
+        return e1.getLocation().toString().compareTo(e2.getLocation().toString());
     }
 }

@@ -25,6 +25,7 @@ public class EventPlanner extends javax.swing.JFrame {
      */
     public EventPlanner() {
         initComponents();
+        populateListBox();
     }
 
     /**
@@ -48,8 +49,9 @@ public class EventPlanner extends javax.swing.JFrame {
         YearTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         MessageLabel = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        DateSortButton = new javax.swing.JButton();
+        LocSortButton = new javax.swing.JButton();
+        NameSortButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 255));
@@ -97,17 +99,24 @@ public class EventPlanner extends javax.swing.JFrame {
             MessageLabel.setText(".");
             MessageLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
-            jButton2.setText("Sort by Name");
-            jButton2.addActionListener(new java.awt.event.ActionListener() {
+            DateSortButton.setText("Sort by Date");
+            DateSortButton.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton2ActionPerformed(evt);
+                    DateSortButtonActionPerformed(evt);
                 }
             });
 
-            jButton3.setText("Sort by Location");
-            jButton3.addActionListener(new java.awt.event.ActionListener() {
+            LocSortButton.setText("Sort by Location");
+            LocSortButton.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton3ActionPerformed(evt);
+                    LocSortButtonActionPerformed(evt);
+                }
+            });
+
+            NameSortButton1.setText("Sort by Name");
+            NameSortButton1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    NameSortButton1ActionPerformed(evt);
                 }
             });
 
@@ -145,8 +154,9 @@ public class EventPlanner extends javax.swing.JFrame {
                             .addGap(91, 91, 91)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(DateSortButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LocSortButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(NameSortButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGap(0, 27, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
@@ -172,36 +182,35 @@ public class EventPlanner extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton2)
+                            .addComponent(DateSortButton)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3)))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(NameSortButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(LocSortButton)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                     .addComponent(MessageLabel)
                     .addContainerGap())
             );
 
             pack();
         }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * 
-     * @param evt 
-     */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void populateListBox()
+    {
         File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
-        
         if (ListOfEvents.getModel().getSize() == 0)
         {
             try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
             {
+                sortListByWhatever(econtroller.getEventList(), econtroller.getWhichSort());
                 String line = null;
                 while ((line = reader.readLine()) != null) 
                 {
                     Event newEvent = parseNewEvent(line);
                     
                     ((DefaultListModel)ListOfEvents.getModel()).addElement(newEvent);
+                    
                 }
             } 
             catch (IOException x) 
@@ -209,6 +218,13 @@ public class EventPlanner extends javax.swing.JFrame {
                 System.err.format("IOException: %s%n", x);
             }
         }
+    }
+    /**
+     * 
+     * @param evt 
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
         try
         {
             String name = NameTextField.getText();
@@ -219,11 +235,11 @@ public class EventPlanner extends javax.swing.JFrame {
         
             Event newEvent = new Event(name, loc, mon, date, year);
             ((DefaultListModel)ListOfEvents.getModel()).addElement(newEvent);
-            sortListByDate(econtroller.getEventList());
+            sortListByWhatever(econtroller.getEventList(), econtroller.getWhichSort());// sorts events by date
+            
             clearTextFields();
             try
             {
-                //File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
                 FileWriter writer = new FileWriter(outFile, true);
                 econtroller.outputToFile(newEvent, writer);
                 writer.close();
@@ -244,15 +260,23 @@ public class EventPlanner extends javax.swing.JFrame {
                 MessageLabel.setText("Please enter text in all five boxes.");
             }
         }
+        populateListBox();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void DateSortButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateSortButtonActionPerformed
+        econtroller.setWhichSort('D');
+        populateListBox();
+    }//GEN-LAST:event_DateSortButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void LocSortButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocSortButtonActionPerformed
+        econtroller.setWhichSort('L');
+        populateListBox();
+    }//GEN-LAST:event_LocSortButtonActionPerformed
+
+    private void NameSortButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameSortButton1ActionPerformed
+        econtroller.setWhichSort('N');
+        populateListBox();
+    }//GEN-LAST:event_NameSortButton1ActionPerformed
 
     /**
      * 
@@ -308,10 +332,30 @@ public class EventPlanner extends javax.swing.JFrame {
         
         return newEvent;
     }
-    
-    public ArrayList sortListByDate(ArrayList<Event> list)
+/**
+ * 
+ * @param list
+ * @param which
+ * @return 
+ */
+    public ArrayList sortListByWhatever(ArrayList<Event> list, char which)
     {
-        Collections.sort(list, new EventDateComparator());
+        if (which == 'N')
+        {
+            NameSortButton1.disable();
+            Collections.sort(list, new EventNameComparator());
+        }
+        if (which == 'L')
+        {
+            LocSortButton.disable();
+            Collections.sort(list, new EventLocComparator());
+        }
+        if (which == 'D')
+        {
+            DateSortButton.disable();
+            Collections.sort(list, new EventDateComparator());
+        }
+        
         return list;
     }
     
@@ -351,16 +395,17 @@ public class EventPlanner extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DateSortButton;
     private javax.swing.JTextField DateTextField;
     private javax.swing.JList ListOfEvents;
+    private javax.swing.JButton LocSortButton;
     private javax.swing.JTextField LocationTextField;
     private javax.swing.JLabel MessageLabel;
     private javax.swing.JTextField MonthTextField;
+    private javax.swing.JButton NameSortButton1;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JTextField YearTextField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
