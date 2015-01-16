@@ -12,9 +12,17 @@ package pr3_2.shape.pkgclass;
 public class Triangle extends Shape 
 {
     private int a, b, c;
-    
+    /**
+     * 
+     * @param s1
+     * @param s2
+     * @param s3
+     * @throws InvalidGeometryException 
+     */
     public Triangle(int s1, int s2, int s3) throws InvalidGeometryException
     {
+        // finding the longest side to determine if the triangle is legitimate
+        
         if(s1>s2 && s1>s3)
         {
             c = s1; a = s2; b = s3;
@@ -28,7 +36,9 @@ public class Triangle extends Shape
             c = s3; a = s1; b = s2;
         }
         
-        if ((a+b) >= c)
+        // throwing exception based on the longest side
+        
+        if ((a+b) <= c)
         {
             throw new InvalidGeometryException("The longest side is too long.");
         }

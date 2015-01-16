@@ -14,6 +14,11 @@ public class Ellipse extends Shape
     private int r1;
     private int r2;
     
+    /**
+     * 
+     * @param r1
+     * @param r2 
+     */
     public Ellipse(int r1, int r2)
     {
         this.r1 = r1;

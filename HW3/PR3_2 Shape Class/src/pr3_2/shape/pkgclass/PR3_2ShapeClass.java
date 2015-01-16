@@ -33,7 +33,9 @@ import java.util.Scanner;
  */
 public class PR3_2ShapeClass {
 
-    
+    /**
+     * 
+     */
     public static void TriangleConstuctor()
     {
         while (true)
@@ -48,21 +50,18 @@ public class PR3_2ShapeClass {
                 b = sc.nextInt();
                 c = sc.nextInt();
                 System.out.printf("a: %d; b: %d, c: %d\n", a, b, c);
-                
-                try
-                {
-                    triangle1 = new Triangle(a, b, c);
-                }
-                catch(InvalidGeometryException ex)
-                {
-                    System.out.println(ex.getMessage()); // "The longest side is too long."
-                    
-                }
-                
+
+                triangle1 = new Triangle(a, b, c);
             }
             catch(InputMismatchException e)
             {
                 System.out.println("Invalid entry. Please start again, integers this time.");
+                continue;
+            }
+            catch(InvalidGeometryException ex)
+            {
+                System.out.println(ex.getMessage()); // "The longest side is too long."
+                continue;
             }
             break;
         }
@@ -84,11 +83,12 @@ public class PR3_2ShapeClass {
                 a = sc.nextInt();
                 b = sc.nextInt();
                 System.out.printf("a: %d; b: %d\n", a, b);
-                ellipse1 = new Ellipse(a, b);   
+                ellipse1 = new Ellipse(a, b); 
             }
             catch(InputMismatchException e)
             {
                 System.out.println("Invalid entry. Please start again, integers this time.");
+                continue;
             }
             break;
         }
@@ -101,7 +101,7 @@ public class PR3_2ShapeClass {
         while (true)
         {
             Rectangle rec1;
-            System.out.println("Please enter the two side of the rectangle, integers only.");
+            System.out.println("\nPlease enter the two side of the rectangle, integers only.");
             int a, b;
             try
             {
@@ -114,18 +114,25 @@ public class PR3_2ShapeClass {
             catch(InputMismatchException e)
             {
                 System.out.println("Invalid entry. Please start again, integers this time.");
+                continue;
             }
             break;
         }
     }
-    
+    /**
+     * 
+     */
+    // Asks the user if they would like to continue, and quits the program if they don't
     public static void continueQuestion()
     {
-        System.out.println("Would you like to continue and create the next shape? y/n");
+        System.out.println("\nWould you like to continue and create the next shape? y/n");
         Scanner sc1 = new Scanner(System.in);
         String answer = sc1.next();
-        if (answer == "n" || answer == "N")
+        System.out.println("You said " + answer);
+        if ("n".equals(answer) || "N".equals(answer))
+        {
             System.exit(0);
+        }
     }
     /**
      * @param args the command line arguments
@@ -146,8 +153,5 @@ public class PR3_2ShapeClass {
             System.out.println("Ellipse constructed. Well done.\n");
             continueQuestion();
         }
-    }
-    
-    
-    
+    }  
 }

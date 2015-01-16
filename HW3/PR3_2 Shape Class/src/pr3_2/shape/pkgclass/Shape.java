@@ -11,11 +11,18 @@ package pr3_2.shape.pkgclass;
  */
 public class Shape 
 {
+    /**
+     * 
+     * @return 
+     */
     public double getArea() 
     {
         return 0;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public double getPerimeter() 
     {
         return 0;
