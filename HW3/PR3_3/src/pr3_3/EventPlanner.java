@@ -83,32 +83,8 @@ public class EventPlanner extends javax.swing.JFrame {
             jLabel1.setFont(new java.awt.Font("Snell Roundhand", 0, 22)); // NOI18N
             jLabel1.setText("Name of event");
 
-            LocationTextField.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    LocationTextFieldActionPerformed(evt);
-                }
-            });
-
             jLabel2.setFont(new java.awt.Font("Snell Roundhand", 0, 22)); // NOI18N
             jLabel2.setText("Month / Day / Year");
-
-            DateTextField.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    DateTextFieldActionPerformed(evt);
-                }
-            });
-
-            MonthTextField.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    MonthTextFieldActionPerformed(evt);
-                }
-            });
-
-            YearTextField.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    YearTextFieldActionPerformed(evt);
-                }
-            });
 
             jLabel3.setFont(new java.awt.Font("Snell Roundhand", 0, 22)); // NOI18N
             jLabel3.setText("Location");
@@ -240,22 +216,6 @@ public class EventPlanner extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void LocationTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocationTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LocationTextFieldActionPerformed
-
-    private void DateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DateTextFieldActionPerformed
-
-    private void MonthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MonthTextFieldActionPerformed
-
-    private void YearTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YearTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_YearTextFieldActionPerformed
 
     /**
      * 
