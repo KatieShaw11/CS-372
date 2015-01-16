@@ -12,7 +12,7 @@ package pr3_3;
  *
  * @author kshaw
  */
-public class Event 
+public class Event
 {
     private String name, location;
     private int date, year, month;
@@ -158,4 +158,15 @@ public class Event
     {
         return String.format("%s at %s on %d/%d/%d", name, location, month, date, year);
     }
+    
+    public int compareYears(Event comparestu) 
+    {
+        int compareYear=((Event)comparestu).getYear();
+        /* For Ascending order*/
+        return this.year-compareYear;
+
+        /* For Descending order do like this */
+        //return compareage-this.studentage;
+    }
+ 
 }

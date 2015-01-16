@@ -63,6 +63,11 @@ public class EventsController
         return eventList.get(i);
     }
     
+    public static ArrayList<Event> getEventList()
+    {
+        return eventList;
+    }
+    
 //    public static Event parseNewEvent(String line)
 //    {
 //        Event newEvent = new Event();
