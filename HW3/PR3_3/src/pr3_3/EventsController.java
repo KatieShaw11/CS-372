@@ -63,4 +63,24 @@ public class EventsController
         return eventList.get(i);
     }
     
+//    public static Event parseNewEvent(String line)
+//    {
+//        Event newEvent = new Event();
+//        
+//        String phrase = line;
+//        String delims = "[ ]+";
+//        String[] tokens = phrase.split(delims);
+//        
+//        newEvent.setName(tokens[0]);
+//        newEvent.setLocation(tokens[1]);
+//        int month = Integer.parseInt(tokens[2]);
+//        int date = Integer.parseInt(tokens[3]);
+//        int year = Integer.parseInt(tokens[4]);
+//        newEvent.setMonth(month);
+//        newEvent.setDate(date);
+//        newEvent.setYear(year);
+//        
+//        return newEvent;
+//    }
+    
 }

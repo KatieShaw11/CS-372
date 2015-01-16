@@ -25,6 +25,16 @@ public class Event
      * @param Date
      * @param Year 
      */
+    
+    public Event()
+    {
+        name = "";
+        location = "";
+        month = 0;
+        date = 0;
+        year = 0;             
+    }
+    
     public Event (String Name, String Loc, int Month, int Date, int Year)
     {
         name = Name;
@@ -45,6 +55,59 @@ public class Event
         month = 0;
         date = 0;
         year = 0;
+    }
+    // Accessors:
+    
+    public int getYear()
+    {
+        return year;
+    }
+    
+    public int getMonth()
+    {
+        return month;
+    }
+    
+    public int getDate()
+    {
+        return date;
+    }
+    
+    public String getName()
+    {
+        return name;
+    }
+    
+    public String getLocation()
+    {
+        return location;
+    }
+    
+    // Modifiers:
+    
+    public void setYear(int Year)
+    {
+        year = Year;
+    }
+    
+    public void setMonth(int Mon)
+    {
+        month = Mon;
+    }
+    
+    public void setDate(int Date)
+    {
+        date = Date;
+    }
+    
+    public void setName(String Name)
+    {
+        name = Name;
+    }
+    
+    public void setLocation(String Loc)
+    {
+        location = Loc;
     }
     
     /**

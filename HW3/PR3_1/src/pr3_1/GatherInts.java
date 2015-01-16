@@ -1,12 +1,11 @@
 /*
-Write a console program that asks the user for 10 integers, then outputs the 
+Write a console (sorry, accidently did GUI) program that asks the user for 10 integers, then outputs the 
 max, min, and average. Use Exception Handling to handle the case where the user 
 doesn’t pass in an integer value (for Scanner.nextInt()).
  */
 package pr3_1;
 import java.util.*;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -28,34 +27,9 @@ public class GatherInts
      */
     public ArrayList<Integer> getIntList()
     {
-
         return integerList;       
     }
-    /**
-     * 
-     * @param str
-     * @return
-     * @throws IllegalArgumentException 
-     */
-    public int parseTheInt(String str) throws IllegalArgumentException
-    {
-        int value = 0;
-        if (str.isEmpty())
-        {
-            throw new IllegalArgumentException("Empty text is not legal");
-        }
-        try
-        {
-            value = Integer.parseInt(str);
-        }
-        catch(NumberFormatException e)
-        {
-            //JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-        
-        return value;
-        
-    }
+
     /**
      * 
      * @param newInt
@@ -125,6 +99,4 @@ public class GatherInts
         
         return min;
     }
-    
-
 }

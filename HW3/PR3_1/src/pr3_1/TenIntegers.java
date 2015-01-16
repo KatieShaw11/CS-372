@@ -1,5 +1,5 @@
 /*
-Write a console program that asks the user for 10 integers, then outputs the 
+Write a console (sorry I did GUI) program that asks the user for 10 integers, then outputs the 
 max, min, and average. Use Exception Handling to handle the case where the user 
 doesn’t pass in an integer value (for Scanner.nextInt()).
  */
@@ -40,6 +40,7 @@ public class TenIntegers extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         messageLabel = new javax.swing.JLabel();
         theMessageField = new javax.swing.JLabel();
+        MessageLabel = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -67,17 +68,15 @@ public class TenIntegers extends javax.swing.JFrame {
             }
         });
 
-        inputField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputFieldActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Snell Roundhand", 1, 18)); // NOI18N
         jLabel1.setText("Enter new integer here:");
 
         theMessageField.setFont(new java.awt.Font("Snell Roundhand", 0, 18)); // NOI18N
         theMessageField.setText("Integers Left");
+
+        MessageLabel.setFont(new java.awt.Font("Nanum Myeongjo", 1, 12)); // NOI18N
+        MessageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MessageLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,19 +91,25 @@ public class TenIntegers extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(inputField)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(12, 12, 12)
-                .addComponent(theMessageField, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputField)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(12, 12, 12)
+                        .addComponent(theMessageField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(MessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)))
                 .addComponent(messageLabel))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -119,12 +124,17 @@ public class TenIntegers extends javax.swing.JFrame {
                 .addComponent(minLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(maxLabel)
-                .addGap(60, 60, 60))
+                .addGap(29, 29, 29)
+                .addComponent(MessageLabel)
+                .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * 
+ * @param evt 
+ */
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
         if (calculator.getIntList().size() >= 9)
         {
@@ -134,32 +144,53 @@ public class TenIntegers extends javax.swing.JFrame {
         else
         {
             String text = inputField.getText(); // example String
-        
-            int value = calculator.parseTheInt(text);
             try 
-            {
-                calculator.addInt(value);
+            { 
+                int value;
+                try
+                {
+                    value = parseTheInt(text);
+                    calculator.addInt(value);
+                    averageLabel.setText("Average:" + calculator.calcAverage());
+                    minLabel.setText("Minimum: " + calculator.getMin());
+                    maxLabel.setText("Maximum: " + calculator.getMax());                    
+                }
+                catch(NumberFormatException e)
+                {
+                    JOptionPane.showMessageDialog(this, e.getMessage());
+                }   
             }
             catch (IllegalArgumentException ex)
             {
-               JOptionPane.showMessageDialog(this, ex.getMessage());
+                JOptionPane.showMessageDialog(this, ex.getMessage());
             }
-            averageLabel.setText("Average:" + calculator.calcAverage());
-            minLabel.setText("Minimum: " + calculator.getMin());
-            maxLabel.setText("Maximum: " + calculator.getMax());
+
         
             int intsLeft = 10 - (calculator.getIntList().size());
+            theMessageField.setText(intsLeft + " integers left to enter."); // displays how many left
         
-            theMessageField.setText(intsLeft + " integers left to enter.");
-        
-            inputField.setText(null); // clears text to type a new number
+            inputField.setText(null); // clears text to type a new number 
         }
     }//GEN-LAST:event_buttonActionPerformed
+/**
+ * 
+ * @param str
+ * @return
+ * @throws IllegalArgumentException 
+ */
+    public int parseTheInt(String str) throws IllegalArgumentException
+    {
+        int value = 0;
+        if (str.isEmpty())
+        {
+            throw new IllegalArgumentException("Empty text is not legal");
+        }
 
-    private void inputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputFieldActionPerformed
-
+        value = Integer.parseInt(str);
+  
+        return value;
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -196,6 +227,7 @@ public class TenIntegers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MessageLabel;
     private javax.swing.JLabel averageLabel;
     private javax.swing.JButton button;
     private javax.swing.JTextField inputField;

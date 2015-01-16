@@ -24,26 +24,71 @@ for each class. Override methods from Object as appropriate.
  */
 package pr3_2.shape.pkgclass;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  *
  * @author kshaw
  */
 public class PR3_2ShapeClass {
 
+    
+    public static void TriangleConstuctor()
+    {
+        while (true)
+        {
+            Triangle triangle1;
+            System.out.println("Please enter the three sides of your new triangle, separated by returns. Integers only.");
+            int a, b, c;
+            try
+            {
+                Scanner sc = new Scanner(System.in);
+                a = sc.nextInt();
+                b = sc.nextInt();
+                c = sc.nextInt();
+                System.out.printf("a: %d; b: %d, c: %d\n", a, b, c);
+                
+                try
+                {
+                    triangle1 = new Triangle(a, b, c);
+                }
+                catch(InvalidGeometryException ex)
+                {
+                    System.out.println(ex.getMessage()); // "The longest side is too long."
+                    
+                }
+                
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.println("Invalid entry. Please start again, integers this time.");
+            }
+            break;
+        }
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) 
     {
-        Triangle triangle1;
-        try
+        while(true)
         {
-            triangle1 = new Triangle(1,2,3);
-        }
-        catch(InvalidGeometryException ex)
-        {
-            System.out.println(ex.getMessage());
+            TriangleConstuctor();
+            System.out.println("Triangle constructed. Well done.\n"); 
+                System.out.println("Would you like to continue and create a rectangle? y/n");
+                Scanner sc1 = new Scanner(System.in);
+                String answer = sc1.next();
+                if (answer == "n" || answer == "N")
+                    System.exit(0);
+            
+            Scanner sc2 = new Scanner(System.in);
+             answer = sc2.next();
+            if (answer == "n" || answer == "N")
+                System.exit(0); 
         }
     }
+    
+    
     
 }

@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 package pr3_3;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import javax.swing.DefaultListModel;
 
 
@@ -184,7 +187,26 @@ public class EventPlanner extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
+        File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
+
+        if (ListOfEvents.getModel().getSize() == 0)
+        {
+            try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
+            {
+                String line = null;
+                while ((line = reader.readLine()) != null) 
+                {
+                    Event newEvent = parseNewEvent(line);
+                    ((DefaultListModel)ListOfEvents.getModel()).addElement(newEvent);
+                }
+            } 
+            catch (IOException x) 
+            {
+                System.err.format("IOException: %s%n", x);
+            }
+        }
+        try
+        {
             String name = NameTextField.getText();
             String loc = LocationTextField.getText();
             int mon = Integer.parseInt(MonthTextField.getText().toString());
@@ -192,12 +214,11 @@ public class EventPlanner extends javax.swing.JFrame {
             int year = Integer.parseInt(YearTextField.getText());
         
             Event newEvent = new Event(name, loc, mon, date, year);
-            //econtroller.addEvent(newEvent);
             ((DefaultListModel)ListOfEvents.getModel()).addElement(newEvent);
             clearTextFields();
             try
             {
-                File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
+                //File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
                 FileWriter writer = new FileWriter(outFile, true);
                 econtroller.outputToFile(newEvent, writer);
                 writer.close();
@@ -260,6 +281,26 @@ public class EventPlanner extends javax.swing.JFrame {
                 MonthTextField.getText().length() != 0 &&
                 LocationTextField.getText().length() != 0 &&
                 NameTextField.getText().length() != 0;
+    }
+    
+    public static Event parseNewEvent(String line)
+    {
+        Event newEvent = new Event();
+        
+        String phrase = line;
+        String delims = "[ ]+";
+        String[] tokens = phrase.split(delims);
+        
+        newEvent.setName(tokens[0]);
+        newEvent.setLocation(tokens[1]);
+        int month = Integer.parseInt(tokens[2]);
+        int date = Integer.parseInt(tokens[3]);
+        int year = Integer.parseInt(tokens[4]);
+        newEvent.setMonth(month);
+        newEvent.setDate(date);
+        newEvent.setYear(year);
+        
+        return newEvent;
     }
     /**
      * @param args the command line arguments
