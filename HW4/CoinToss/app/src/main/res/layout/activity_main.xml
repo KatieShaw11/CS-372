@@ -8,7 +8,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Toss Coin"
+        android:text="@string/coin_toss"
         android:id="@+id/flipCoinButton"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Coin"
+        android:text="@string/coin_label"
         android:id="@+id/textView"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
@@ -33,7 +33,8 @@
         android:src="@drawable/headcoin"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:contentDescription="Heads Coin" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -43,6 +44,7 @@
         android:layout_alignTop="@+id/headsButton"
         android:layout_alignLeft="@+id/headsButton"
         android:layout_alignStart="@+id/headsButton"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:contentDescription="Tails Coin" />
 
 </RelativeLayout>

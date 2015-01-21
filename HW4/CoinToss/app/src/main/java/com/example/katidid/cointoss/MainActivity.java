@@ -12,14 +12,21 @@ import java.util.Random;
 
 
 public class MainActivity extends ActionBarActivity {
-
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-
+    /**
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -27,6 +34,11 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
+    /**
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -42,6 +54,10 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     *
+     * @param view
+     */
     public void flipCoin(View view)
     {
         int coinResult;
