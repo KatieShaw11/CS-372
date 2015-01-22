@@ -15,7 +15,7 @@ import javax.swing.DefaultListModel;
  * @author katidid
  */
 public class TournamentSimulator extends javax.swing.JFrame {
-
+    TourneyController controller = new TourneyController();
     /**
      * Creates new form TournamentSimulator
      */
@@ -35,7 +35,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         newStudentButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TheList = new javax.swing.JList();
+        ListOfCompetitors = new javax.swing.JList();
         NameTextField = new javax.swing.JTextField();
         SchoolTextField = new javax.swing.JTextField();
         NoviceButton = new javax.swing.JRadioButton();
@@ -51,24 +51,24 @@ public class TournamentSimulator extends javax.swing.JFrame {
             }
         });
 
-        TheList.setModel(new DefaultListModel<Competitor>()
+        ListOfCompetitors.setModel(new DefaultListModel<Competitor>()
             {
                 public int getSize(){
-                    return econtroller.getNumEvents();
+                    return controller.getNumComps();
                 }
-                public Event getElementAt(int i) {
-                    return econtroller.getEvent(i);
+                public Competitor getElementAt(int i) {
+                    return controller.getStu(i);
                 }
-                public void addElement(Event e) {
+                public void addElement(Competitor e) {
                     super.addElement(e);
-                    econtroller.addEvent(e);
+                    controller.addStu(e);
                 }
-                public void add(int i, Event e) {
+                public void add(int i, Competitor e) {
                     super.add(i,e);
-                    econtroller.addEvent(e);
+                    controller.addStu(e);
                 }
             });
-            jScrollPane1.setViewportView(TheList);
+            jScrollPane1.setViewportView(ListOfCompetitors);
 
             NameTextField.setText("Name");
             NameTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -175,8 +175,9 @@ public class TournamentSimulator extends javax.swing.JFrame {
                 level = 3;
             else
                 level = 0;
-//        
-//            Competitor newStu = new Competitor(name, school, level);
+        
+            Competitor newStu = new Competitor(name, school, level);
+            ((DefaultListModel)ListOfCompetitors.getModel()).addElement(newStu);
 //            ((DefaultListModel)ListOfEvents.getModel()).addElement(newEvent);
 //            sortListByWhatever(econtroller.getEventList(), econtroller.getWhichSort());// sorts events by date
 //            
@@ -246,11 +247,11 @@ public class TournamentSimulator extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton JuniorButton;
+    private javax.swing.JList ListOfCompetitors;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JRadioButton NoviceButton;
     private javax.swing.JTextField SchoolTextField;
     private javax.swing.JRadioButton SeniorButton;
-    private javax.swing.JList TheList;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton newStudentButton;
