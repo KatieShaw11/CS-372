@@ -18,17 +18,19 @@ import javax.swing.DefaultListModel;
  */
 public class TournamentSimulator extends javax.swing.JFrame {
     TourneyController controller = new TourneyController();
+    int CompetitorYes = 2; // Check if adding a judge or competitor; 1 if true, 0 if false
     /**
      * Creates new form TournamentSimulator
      */
     public TournamentSimulator() {
         initComponents();
         populateListBox();
+        populateJudgeListBox();
     }
     
     private void populateListBox()
     {
-        File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
+        File outFile = new File("/Users/katidid/desktop/COMPETITORS.txt");
         if (ListOfCompetitors.getModel().getSize() == 0)
         {
             try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
@@ -36,9 +38,32 @@ public class TournamentSimulator extends javax.swing.JFrame {
                 String line = null;
                 while ((line = reader.readLine()) != null) 
                 {
-                    Competitor newEvent = parseNewCompetitor(line);
+                    Competitor newCompetitor = parseNewCompetitor(line);
                     
-                    ((DefaultListModel)ListOfCompetitors.getModel()).addElement(newEvent);
+                    ((DefaultListModel)ListOfCompetitors.getModel()).addElement(newCompetitor);
+                    
+                }
+            } 
+            catch (IOException x) 
+            {
+                System.err.format("IOException: %s%n", x);
+            }
+        }
+    }
+    
+    private void populateJudgeListBox()
+    {
+        File outFile = new File("/Users/katidid/desktop/JUDGES.txt");
+        if (ListOfJudges.getModel().getSize() == 0)
+        {
+            try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
+            {
+                String line = null;
+                while ((line = reader.readLine()) != null) 
+                {
+                    Judge newJ = parseNewJudge(line);
+                    
+                    ((DefaultListModel)ListOfJudges.getModel()).addElement(newJ);
                     
                 }
             } 
@@ -59,22 +84,28 @@ public class TournamentSimulator extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        newStudentButton = new javax.swing.JButton();
+        AddTypeBG = new javax.swing.ButtonGroup();
+        newPersonButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListOfCompetitors = new javax.swing.JList();
         NameTextField = new javax.swing.JTextField();
         SchoolTextField = new javax.swing.JTextField();
         NoviceButton = new javax.swing.JRadioButton();
         JuniorButton = new javax.swing.JRadioButton();
-        SeniorButton = new javax.swing.JRadioButton();
+        OpenButton = new javax.swing.JRadioButton();
         MessageLabel = new javax.swing.JLabel();
+        AddCompRButton = new javax.swing.JRadioButton();
+        AddJudgeRButton = new javax.swing.JRadioButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ListOfJudges = new javax.swing.JList();
+        jComboBox1 = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        newStudentButton.setText("Add competitor");
-        newStudentButton.addActionListener(new java.awt.event.ActionListener() {
+        newPersonButton.setText("Add competitor");
+        newPersonButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newStudentButtonActionPerformed(evt);
+                newPersonButtonActionPerformed(evt);
             }
         });
 
@@ -107,65 +138,138 @@ public class TournamentSimulator extends javax.swing.JFrame {
             buttonGroup1.add(JuniorButton);
             JuniorButton.setText("Junior");
 
-            buttonGroup1.add(SeniorButton);
-            SeniorButton.setText("Something");
+            buttonGroup1.add(OpenButton);
+            OpenButton.setText("Open");
 
             MessageLabel.setText("Message");
 
-            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-            getContentPane().setLayout(layout);
-            layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(newStudentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(NameTextField)
-                            .addComponent(SchoolTextField))
-                        .addComponent(NoviceButton)
-                        .addComponent(JuniorButton)
-                        .addComponent(SeniorButton))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(60, 60, 60))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(188, 188, 188)
-                    .addComponent(MessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(77, Short.MAX_VALUE))
-            );
-            layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(59, 59, 59)
-                            .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(SchoolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
+            AddTypeBG.add(AddCompRButton);
+            AddCompRButton.setText("Add Competitor");
+            AddCompRButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    AddCompRButtonActionPerformed(evt);
+                }
+            });
+
+            AddTypeBG.add(AddJudgeRButton);
+            AddJudgeRButton.setText("Add Judge");
+            AddJudgeRButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    AddJudgeRButtonActionPerformed(evt);
+                }
+            });
+
+            ListOfJudges.setModel(new DefaultListModel<Judge>()
+                {
+                    public int getSize(){
+                        return controller.getNumJudges();
+                    }
+                    public Judge getElementAt(int i) {
+                        return controller.getJudge(i);
+                    }
+                    public void addElement(Judge e) {
+                        super.addElement(e);
+                        controller.addJudge(e);
+                    }
+                    public void add(int i, Judge e) {
+                        super.add(i,e);
+                        controller.addJudge(e);
+                    }
+                });
+                jScrollPane2.setViewportView(ListOfJudges);
+
+                jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+                jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        jComboBox1ActionPerformed(evt);
+                    }
+                });
+
+                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+                getContentPane().setLayout(layout);
+                layout.setHorizontalGroup(
+                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(newPersonButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(NameTextField)
+                                .addComponent(SchoolTextField))
                             .addComponent(NoviceButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(JuniorButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(SeniorButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                            .addComponent(newStudentButton))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(25, 25, 25)
-                    .addComponent(MessageLabel)
-                    .addContainerGap())
-            );
+                            .addComponent(OpenButton)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(298, 298, 298))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(188, 188, 188)
+                                .addComponent(MessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(168, 168, 168)
+                                .addComponent(AddCompRButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(AddJudgeRButton)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                );
+                layout.setVerticalGroup(
+                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(72, 72, 72)
+                                .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(SchoolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(NoviceButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JuniorButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(OpenButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(newPersonButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(AddCompRButton)
+                                    .addComponent(AddJudgeRButton))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(25, 25, 25)
+                        .addComponent(MessageLabel)
+                        .addContainerGap())
+                );
 
-            pack();
-        }// </editor-fold>//GEN-END:initComponents
+                pack();
+            }// </editor-fold>//GEN-END:initComponents
 
-    private void newStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newStudentButtonActionPerformed
-        File studentOutFile = new File("/Users/katidid/desktop/COMPETITORS.txt");
-//        try
-//        {
+    private void newPersonButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPersonButtonActionPerformed
+        if (CompetitorYes == 1) 
+        {
+            buttonForAddingCompetitors();
+        }
+        else if (CompetitorYes == 0)
+        {
+            buttonForAddingJudges();
+        }
+        else
+            MessageLabel.setText("Please select 'add judge' or 'add competitor.'");
+    }//GEN-LAST:event_newPersonButtonActionPerformed
+    public void buttonForAddingCompetitors()
+{
+    File studentOutFile = new File("/Users/katidid/desktop/COMPETITORS.txt");
+        try
+        {
             String name = NameTextField.getText();
             String school = SchoolTextField.getText();
             int level;
@@ -173,7 +277,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
                 level = 1;
             else if(JuniorButton.isSelected())
                 level = 2;
-            else if(SeniorButton.isSelected())
+            else if(OpenButton.isSelected())
                 level = 3;
             else
                 level = 0;
@@ -198,35 +302,122 @@ public class TournamentSimulator extends javax.swing.JFrame {
             {
                 MessageLabel.setText("Didn't make file");
             }
-//        }
-//        catch(NumberFormatException e) // If they don't fill out all the blanks properly
-//        {
-//            if (allFieldsFilled() == true)
-//            {
-//                MessageLabel.setText("Please don't mix numbers and words."); 
-//            }
-//            else
-//            {
-//                MessageLabel.setText("Please enter text in all boxes.");
-//            }
-//        }
-//        populateListBox();
-    }//GEN-LAST:event_newStudentButtonActionPerformed
-public static Competitor parseNewCompetitor(String line)
+        }
+        catch(NumberFormatException e) // If they don't fill out all the blanks properly
+        {
+            if (allFieldsFilled() == true)
+            {
+                MessageLabel.setText("Please don't mix numbers and words."); 
+            }
+            else
+            {
+                MessageLabel.setText("Please enter text in all boxes.");
+            }
+        }
+        populateListBox();
+    }
+    public void buttonForAddingJudges()
+    {
+        File judgeOutFile = new File("/Users/katidid/desktop/JUDGES.txt");
+        try
+        {
+            String name = NameTextField.getText();
+            String school = SchoolTextField.getText();
+            int level;
+
+            Judge newJudge = new Judge(name, school);
+            ((DefaultListModel)ListOfJudges.getModel()).addElement(newJudge);
+
+            try
+            {
+                FileWriter writer = new FileWriter(judgeOutFile, true);
+                try
+                {
+                    writer.write(newJudge.toString() + "\n");
+                }
+                catch(IOException ex)
+                {
+                    MessageLabel.setText("Didn't output.");
+                }
+                writer.close();
+            }
+            catch(IOException ex)
+            {
+                MessageLabel.setText("Didn't make file");
+            }
+        }
+        catch(NumberFormatException e) // If they don't fill out all the blanks properly
+        {
+            if (allFieldsFilled() == true)
+            {
+                MessageLabel.setText("Please don't mix numbers and words."); 
+            }
+            else
+            {
+                MessageLabel.setText("Please enter text in all boxes.");
+            }
+        }
+        populateJudgeListBox();
+    }
+
+    private void AddCompRButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCompRButtonActionPerformed
+        CompetitorYes = 1;
+        newPersonButton.setText("Add Competitor");
+        JuniorButton.setVisible(true);
+        OpenButton.setVisible(true);
+        NoviceButton.setVisible(true);
+    }//GEN-LAST:event_AddCompRButtonActionPerformed
+
+    private void AddJudgeRButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddJudgeRButtonActionPerformed
+        CompetitorYes = 0;
+        newPersonButton.setText("Add Judge");
+        JuniorButton.setVisible(false);
+        OpenButton.setVisible(false);
+        NoviceButton.setVisible(false);
+    }//GEN-LAST:event_AddJudgeRButtonActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+public static Competitor parseNewCompetitor(String line) throws NumberFormatException
     {
         Competitor newStu = new Competitor();
+        
+        String phrase = line;
+        String delims = "; ";
+        String[] phrases = phrase.split(delims);
+        
+        newStu.setName(phrases[0].trim());
+        newStu.setSchool(phrases[1].trim());
+        
+        int level = Integer.parseInt(phrases[2].trim());
+//        if (level == 0)
+//        {
+//            throw new NumberFormatException();
+//        }
+        newStu.setLevel(level);
+        
+        return newStu;
+    }
+public static Judge parseNewJudge(String line) throws NumberFormatException
+    {
+        Judge newJ = new Judge();
         
         String phrase = line;
         String delims = ";";
         String[] phrases = phrase.split(delims);
         
-        newStu.setName(phrases[0]);
-        newStu.setSchool(phrases[1]);
+        newJ.setName(phrases[0].trim());
+        newJ.setSchool(phrases[1].trim());
         
-        int level = Integer.parseInt(phrases[2]);
-        newStu.setLevel(level);
-        
-        return newStu;
+        return newJ;
+    }
+
+public boolean allFieldsFilled() // So the exception message can be specific 
+            // about the type of error it's encountering (wrong text or no text)
+    {
+        return NameTextField.getText().length() != 0 && 
+                SchoolTextField.getText().length() != 0; // COME BACK TO THISSSSSSSS!
     }
     /**
      * @param args the command line arguments
@@ -264,15 +455,21 @@ public static Competitor parseNewCompetitor(String line)
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton AddCompRButton;
+    private javax.swing.JRadioButton AddJudgeRButton;
+    private javax.swing.ButtonGroup AddTypeBG;
     private javax.swing.JRadioButton JuniorButton;
     private javax.swing.JList ListOfCompetitors;
+    private javax.swing.JList ListOfJudges;
     private javax.swing.JLabel MessageLabel;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JRadioButton NoviceButton;
+    private javax.swing.JRadioButton OpenButton;
     private javax.swing.JTextField SchoolTextField;
-    private javax.swing.JRadioButton SeniorButton;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton newStudentButton;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton newPersonButton;
     // End of variables declaration//GEN-END:variables
 }

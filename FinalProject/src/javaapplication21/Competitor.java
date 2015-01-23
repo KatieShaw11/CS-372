@@ -17,8 +17,12 @@ public class Competitor
     private String school;
     private int level;
     private int id;
-    ArrayList<Judge> judgesHad = new ArrayList <Judge>();
-    
+    ArrayList<Integer> judgesIDHad = new ArrayList <>();
+    ArrayList<Integer> comeptitorsIDHad = new ArrayList <>();
+
+    /**
+     * 
+     */
     Competitor()
     {
         
@@ -65,9 +69,9 @@ public class Competitor
      * 
      * @return 
      */
-    public ArrayList<Judge> getPrevJudges()
+    public ArrayList<Integer> getPrevJudges()
     {
-        return judgesHad;
+        return judgesIDHad;
     }
     /**
      * 
@@ -110,7 +114,7 @@ public class Competitor
      */
     public void addJudge(Judge newJudge)
     {
-        judgesHad.add(newJudge);
+        judgesIDHad.add(newJudge.getID());
     }
     /**
      * 

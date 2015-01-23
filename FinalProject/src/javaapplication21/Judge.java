@@ -16,6 +16,11 @@ public class Judge
     private String lastname;
     private String name = firstname + " " + lastname;
     private String school;
+    private int id;
+    
+    Judge()
+    {
+    }
     /**
      * 
      * @param Name
@@ -58,6 +63,11 @@ public class Judge
     {
         return school;
     }
+    public int getID()
+    {
+        return id;
+    }
+    
     /**
      * 
      * @param name 
@@ -76,10 +86,22 @@ public class Judge
     }
     /**
      * 
+     * @param name 
+     */
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    /**
+     * 
      * @param school 
      */
     public void setSchool(String school)
     {
         this.school = school;
+    }
+    public String toString()
+    {
+        return String.format("%s; %s", name, school);
     }
 }
