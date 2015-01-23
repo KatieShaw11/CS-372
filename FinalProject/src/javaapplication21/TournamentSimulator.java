@@ -5,7 +5,9 @@
  */
 package javaapplication21;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.DefaultListModel;
@@ -21,6 +23,30 @@ public class TournamentSimulator extends javax.swing.JFrame {
      */
     public TournamentSimulator() {
         initComponents();
+        populateListBox();
+    }
+    
+    private void populateListBox()
+    {
+        File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
+        if (ListOfCompetitors.getModel().getSize() == 0)
+        {
+            try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
+            {
+                String line = null;
+                while ((line = reader.readLine()) != null) 
+                {
+                    Competitor newEvent = parseNewCompetitor(line);
+                    
+                    ((DefaultListModel)ListOfCompetitors.getModel()).addElement(newEvent);
+                    
+                }
+            } 
+            catch (IOException x) 
+            {
+                System.err.format("IOException: %s%n", x);
+            }
+        }
     }
 
     /**
@@ -41,6 +67,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
         NoviceButton = new javax.swing.JRadioButton();
         JuniorButton = new javax.swing.JRadioButton();
         SeniorButton = new javax.swing.JRadioButton();
+        MessageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +84,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
                     return controller.getNumComps();
                 }
                 public Competitor getElementAt(int i) {
-                    return controller.getStu(i);
+                    return controller.getCompetitor(i);
                 }
                 public void addElement(Competitor e) {
                     super.addElement(e);
@@ -71,37 +98,19 @@ public class TournamentSimulator extends javax.swing.JFrame {
             jScrollPane1.setViewportView(ListOfCompetitors);
 
             NameTextField.setText("Name");
-            NameTextField.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    NameTextFieldActionPerformed(evt);
-                }
-            });
 
             SchoolTextField.setText("School");
-            SchoolTextField.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    SchoolTextFieldActionPerformed(evt);
-                }
-            });
 
             buttonGroup1.add(NoviceButton);
             NoviceButton.setText("Novice");
-            NoviceButton.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    NoviceButtonActionPerformed(evt);
-                }
-            });
 
             buttonGroup1.add(JuniorButton);
             JuniorButton.setText("Junior");
-            JuniorButton.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    JuniorButtonActionPerformed(evt);
-                }
-            });
 
             buttonGroup1.add(SeniorButton);
             SeniorButton.setText("Something");
+
+            MessageLabel.setText("Message");
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
@@ -117,18 +126,18 @@ public class TournamentSimulator extends javax.swing.JFrame {
                         .addComponent(NoviceButton)
                         .addComponent(JuniorButton)
                         .addComponent(SeniorButton))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(45, 45, 45))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(60, 60, 60))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(188, 188, 188)
+                    .addComponent(MessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(77, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap(23, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(59, 59, 59)
                             .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,28 +149,21 @@ public class TournamentSimulator extends javax.swing.JFrame {
                             .addComponent(JuniorButton)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(SeniorButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(newStudentButton)
-                    .addGap(47, 47, 47))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                            .addComponent(newStudentButton))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(25, 25, 25)
+                    .addComponent(MessageLabel)
+                    .addContainerGap())
             );
 
             pack();
         }// </editor-fold>//GEN-END:initComponents
 
-    private void NameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NameTextFieldActionPerformed
-
-    private void SchoolTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SchoolTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SchoolTextFieldActionPerformed
-
-    private void NoviceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoviceButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoviceButtonActionPerformed
-
     private void newStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newStudentButtonActionPerformed
-        File outFile = new File("/Users/katidid/desktop/EVENTS.txt");
+        File studentOutFile = new File("/Users/katidid/desktop/COMPETITORS.txt");
 //        try
 //        {
             String name = NameTextField.getText();
@@ -178,19 +180,24 @@ public class TournamentSimulator extends javax.swing.JFrame {
         
             Competitor newStu = new Competitor(name, school, level);
             ((DefaultListModel)ListOfCompetitors.getModel()).addElement(newStu);
-//            ((DefaultListModel)ListOfEvents.getModel()).addElement(newEvent);
-//            sortListByWhatever(econtroller.getEventList(), econtroller.getWhichSort());// sorts events by date
-//            
-//            try
-//            {
-//                FileWriter writer = new FileWriter(outFile, true);
-//                econtroller.outputToFile(newEvent, writer);
-//                writer.close();
-//            }
-//            catch(IOException ex)
-//            {
-//                MessageLabel.setText("Didn't make file");
-//            }
+          
+            try
+            {
+                FileWriter writer = new FileWriter(studentOutFile, true);
+                try
+                {
+                    writer.write(newStu.toString() + "\n");
+                }
+                catch(IOException ex)
+                {
+                    MessageLabel.setText("Didn't output.");
+                }
+                writer.close();
+            }
+            catch(IOException ex)
+            {
+                MessageLabel.setText("Didn't make file");
+            }
 //        }
 //        catch(NumberFormatException e) // If they don't fill out all the blanks properly
 //        {
@@ -200,16 +207,27 @@ public class TournamentSimulator extends javax.swing.JFrame {
 //            }
 //            else
 //            {
-//                MessageLabel.setText("Please enter text in all five boxes.");
+//                MessageLabel.setText("Please enter text in all boxes.");
 //            }
 //        }
 //        populateListBox();
     }//GEN-LAST:event_newStudentButtonActionPerformed
-
-    private void JuniorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JuniorButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JuniorButtonActionPerformed
-
+public static Competitor parseNewCompetitor(String line)
+    {
+        Competitor newStu = new Competitor();
+        
+        String phrase = line;
+        String delims = ";";
+        String[] phrases = phrase.split(delims);
+        
+        newStu.setName(phrases[0]);
+        newStu.setSchool(phrases[1]);
+        
+        int level = Integer.parseInt(phrases[2]);
+        newStu.setLevel(level);
+        
+        return newStu;
+    }
     /**
      * @param args the command line arguments
      */
@@ -248,6 +266,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton JuniorButton;
     private javax.swing.JList ListOfCompetitors;
+    private javax.swing.JLabel MessageLabel;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JRadioButton NoviceButton;
     private javax.swing.JTextField SchoolTextField;

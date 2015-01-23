@@ -19,6 +19,10 @@ public class Competitor
     private int id;
     ArrayList<Judge> judgesHad = new ArrayList <Judge>();
     
+    Competitor()
+    {
+        
+    }
     /**
      * 
      * @param name

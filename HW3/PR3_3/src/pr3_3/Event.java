@@ -17,15 +17,9 @@ public class Event
     private String name, location;
     private int date, year, month;
     
-    /**
-     * 
-     * @param Name
-     * @param Loc
-     * @param Month
-     * @param Date
-     * @param Year 
-     */
-    
+/**
+ * 
+ */
     public Event()
     {
         name = "";

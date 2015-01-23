@@ -23,9 +23,14 @@ public class TourneyController
         return competitorList.size();
     }
     
-    public Competitor getStu(int i)
+    public Competitor getCompetitor(int i)
     {
         return competitorList.get(i);
+    }
+    
+    public ArrayList<Competitor> getCompetitorList()
+    {
+        return competitorList;
     }
     
     public void addStu(Competitor comp)
