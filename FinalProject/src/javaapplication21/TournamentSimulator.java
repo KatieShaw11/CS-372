@@ -91,7 +91,9 @@ public class TournamentSimulator extends javax.swing.JFrame {
             }
         }
     }
-    
+    /**
+     * 
+     */
     private void populateSchoolBox()
     {
         File outFile = new File("/Users/katidid/desktop/SCHOOLS.txt");
@@ -415,7 +417,9 @@ public class TournamentSimulator extends javax.swing.JFrame {
                 level = 3;
             else
                 level = 0;
-            int id = 100000000 + ListOfCompetitors.getModel().getSize();
+            int id = 10000 + ListOfCompetitors.getModel().getSize();
+            int schoolId = parseNewSchool(schoolComboBox.getSelectedItem().toString()).getId();
+            id = id + schoolId;
         
             Competitor newStu = new Competitor(firstName, lastName, school, level, id);
             ((DefaultListModel)ListOfCompetitors.getModel()).addElement(newStu);
@@ -469,8 +473,9 @@ public class TournamentSimulator extends javax.swing.JFrame {
         {
             String firstName = FirstNameTextField.getText();
             String lastName = LastNameTextField.getText();
-            String school = schoolComboBox.getSelectedItem().toString();
-            int id = 100000000 + ListOfJudges.getModel().getSize();
+            String school = parseNewSchool(schoolComboBox.getSelectedItem().toString()).getName();
+            int id = 10000 + ListOfJudges.getModel().getSize();
+            id = id + parseNewSchool(schoolComboBox.getSelectedItem().toString()).getId();
 
             Judge newJudge = new Judge(firstName, lastName, school, id);
             ((DefaultListModel)ListOfJudges.getModel()).addElement(newJudge);
@@ -506,14 +511,16 @@ public class TournamentSimulator extends javax.swing.JFrame {
         }
         populateJudgeListBox();
     }
-    
+    /**
+     * 
+     */
     public void buttonForAddingSchools()
     {
         MessageLabel.setText("");
         populateSchoolBox();
         File schoolOutFile = new File("/Users/katidid/desktop/SCHOOLS.txt");
         String name = FirstNameTextField.getText();
-        int id = 100000000 + schoolComboBox.getItemCount();
+        int id = 100000000 + (schoolComboBox.getItemCount()*100000);
 
         School newSchool = new School(name, id);
         schoolComboBox.addItem(newSchool);
@@ -570,9 +577,12 @@ public class TournamentSimulator extends javax.swing.JFrame {
         OpenButton.setVisible(false);
         NoviceButton.setVisible(false);
         schoolComboBox.setVisible(true);
+        FirstNameTextField.setVisible(true);
         LastNameTextField.setVisible(true);
         FirstNameTextField.setText("First Name");
         LastNameTextField.setText("Last Name");
+        divisionLabel.setVisible(false);
+        newPersonButton.setVisible(true);
     }//GEN-LAST:event_AddJudgeRButtonActionPerformed
     /**
      * 
@@ -608,6 +618,9 @@ public class TournamentSimulator extends javax.swing.JFrame {
         NoviceButton.setVisible(false);
         schoolComboBox.setVisible(false);
         LastNameTextField.setVisible(false);
+        FirstNameTextField.setVisible(true);
+        newPersonButton.setVisible(true);
+        divisionLabel.setVisible(false);
     }//GEN-LAST:event_AddSchoolRButtonActionPerformed
     /**
      * 

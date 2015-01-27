@@ -2,6 +2,12 @@
 package javaapplication21;
 
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import static javaapplication21.TournamentSimulator.parseNewCompetitor;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -31,7 +37,7 @@ public class RunTournament extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        roundList = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,44 +57,48 @@ public class RunTournament extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        roundList.setModel(new DefaultListModel<String>()
+            {
+                public void addElement(String e) {
+                    super.addElement(e);
+                }
+                public void add(int i, String e) {
+                    super.add(i,e);
+                }
+            });
+            jScrollPane1.setViewportView(roundList);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backButton)
-                        .addGap(138, 138, 138)
-                        .addComponent(jButton1)))
-                .addContainerGap(232, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jButton1)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(293, Short.MAX_VALUE))
-        );
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(backButton)
+                            .addGap(138, 138, 138)
+                            .addComponent(jButton1)))
+                    .addContainerGap(232, Short.MAX_VALUE))
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(backButton))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(21, 21, 21)
+                            .addComponent(jButton1)))
+                    .addGap(18, 18, 18)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(293, Short.MAX_VALUE))
+            );
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+            pack();
+        }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         tournMenu.setVisible(true);
@@ -96,14 +106,53 @@ public class RunTournament extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        sorter.run();
+        sorter.CompetitorMatch();
+        populateRoundBox();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    public Round parseNewRound(String line)
+    {
+        Round newJ = new Round();
+        
+        String phrase = line;
+        String delims = ",";
+        String[] phrases = phrase.split(delims);
+        
+        int c1 = Integer.parseInt(phrases[0].trim());
+        newJ.setC1(c1);
+        int c2 = Integer.parseInt(phrases[1].trim());
+        newJ.setC2(c2);
+        int r = Integer.parseInt(phrases[2].trim());
+        newJ.setRound(r);
+        
+        return newJ;
+    }
+    
+    private void populateRoundBox()
+    {
+        File outFile = new File("/Users/katidid/Documents/CS-372/FinalProject/Division1Print.txt");
+        if (roundList.getModel().getSize() == 0)
+        {
+            try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
+            {
+                String line = null;
+                while ((line = reader.readLine()) != null) 
+                {
+                    Round newRound = parseNewRound(line);
+                    if(newRound.getRound() == 1)
+                        ((DefaultListModel)roundList.getModel()).addElement(newRound.toString());    
+                }
+            } 
+            catch (IOException x) 
+            {
+                System.err.format("IOException: %s%n", x);
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList roundList;
     // End of variables declaration//GEN-END:variables
 }

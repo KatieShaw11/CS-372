@@ -1,5 +1,6 @@
 package javaapplication21;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -29,6 +30,8 @@ public class TournamentMenu extends javax.swing.JFrame {
         firstMenu = in;
         ArrayList<Tournament> tournamentList = new ArrayList<>(); 
         tournamentList = getTournaments();
+        getContentPane().setBackground(Color.darkGray);
+        ViewTournamentButton.setVisible(false);
         for (int i = 0; i < tournamentList.size(); i++)
         {
             tournamentSelection.addItem(tournamentList.get(i));
