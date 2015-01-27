@@ -26,10 +26,12 @@ public class Judge
      * @param Name
      * @param School 
      */
-    Judge(String Name, String School)
+    Judge(String Name, String lastName, String School, int id)
     {
-        name = Name;
+        firstname = Name;
+        lastname = lastName;
         school = School;
+        this.id = id;
     }
     /**
      * 
@@ -100,8 +102,12 @@ public class Judge
     {
         this.school = school;
     }
+    public void setID(int ID)
+    {
+        id = ID;
+    }
     public String toString()
     {
-        return String.format("%s; %s", name, school);
+        return String.format("%s; %s; %s; %d", firstname, lastname, school, id);
     }
 }

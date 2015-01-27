@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public class Competitor 
 {
     private String name;
+    private String firstName;
+    private String lastName;
     private String school;
     private int level;
     private int id;
@@ -33,9 +35,10 @@ public class Competitor
      * @param school
      * @param level 
      */
-    Competitor(String name, String school, int level)
+    Competitor(String firstName, String lastName, String school, int level)
     {
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.school = school;
         this.level = level;
     }
@@ -92,6 +95,14 @@ public class Competitor
     {
         this.name = name;
     }
+    public void setFirstName(String name)
+    {
+        firstName = name;
+    }
+    public void setLastName(String name)
+    {
+        lastName = name;
+    }
     /**
      * 
      * @param school 
@@ -131,6 +142,6 @@ public class Competitor
      */
     public String toString()
     {
-        return String.format("%s; %s; %d", name, school, level);
+        return String.format("%s; %s; %s; %d; %d", lastName, firstName, school, level, id);
     }
 }

@@ -305,7 +305,8 @@ public class TournamentSimulator extends javax.swing.JFrame {
     File studentOutFile = new File("/Users/katidid/desktop/COMPETITORS.txt");
         try
         {
-            String name = FirstNameTextField.getText();
+            String firstName = FirstNameTextField.getText();
+            String lastName = LastNameTextField.getText();
             //String school = SchoolTextField.getText();
             String school = schoolComboBox.getSelectedItem().toString();
             int level;
@@ -318,7 +319,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
             else
                 level = 0;
         
-            Competitor newStu = new Competitor(name, school, level);
+            Competitor newStu = new Competitor(firstName, lastName, school, level);
             ((DefaultListModel)ListOfCompetitors.getModel()).addElement(newStu);
           
             try
@@ -357,11 +358,11 @@ public class TournamentSimulator extends javax.swing.JFrame {
         File judgeOutFile = new File("/Users/katidid/desktop/JUDGES.txt");
         try
         {
-            String name = FirstNameTextField.getText();
+            String firstName = FirstNameTextField.getText();
+            String lastName = LastNameTextField.getText();
             String school = schoolComboBox.getSelectedItem().toString();
-            int level;
 
-            Judge newJudge = new Judge(name, school);
+            Judge newJudge = new Judge(firstName, lastName, school, 1);
             ((DefaultListModel)ListOfJudges.getModel()).addElement(newJudge);
 
             try
@@ -417,7 +418,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
     }//GEN-LAST:event_FirstNameTextFieldMouseClicked
 
     private void LastNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LastNameTextFieldMouseClicked
-        // TODO add your handling code here:
+        LastNameTextField.setText("");
     }//GEN-LAST:event_LastNameTextFieldMouseClicked
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -432,15 +433,18 @@ public static Competitor parseNewCompetitor(String line) throws NumberFormatExce
         String delims = "; ";
         String[] phrases = phrase.split(delims);
         
-        newStu.setName(phrases[0].trim());
-        newStu.setSchool(phrases[1].trim());
+        newStu.setLastName(phrases[0].trim());
+        newStu.setFirstName(phrases[1].trim());
+        newStu.setSchool(phrases[2].trim());
         
-        int level = Integer.parseInt(phrases[2].trim());
+        int level = Integer.parseInt(phrases[3].trim());
 //        if (level == 0)
 //        {
 //            throw new NumberFormatException();
 //        }
         newStu.setLevel(level);
+        int ID = Integer.parseInt(phrases[4].trim());
+        newStu.setId(ID);
         
         return newStu;
     }
@@ -452,8 +456,12 @@ public static Judge parseNewJudge(String line) throws NumberFormatException
         String delims = ";";
         String[] phrases = phrase.split(delims);
         
-        newJ.setName(phrases[0].trim());
-        newJ.setSchool(phrases[1].trim());
+        newJ.setFirstname(phrases[0].trim());
+        newJ.setLastname(phrases[0].trim());
+        newJ.setSchool(phrases[2].trim());
+        
+        int ID = Integer.parseInt(phrases[3].trim());
+        newJ.setID(ID);
         
         return newJ;
     }

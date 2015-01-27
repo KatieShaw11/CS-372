@@ -27,7 +27,7 @@ public class EditTournament extends javax.swing.JFrame {
     /**
      * Creates new form EditTournament
      */
-    public EditTournament(TournamentMenu in) {
+    public EditTournament(TournamentMenu in, Tournament currentTournament) {
         initComponents();
         populateListBox();
         populateJudgeListBox();

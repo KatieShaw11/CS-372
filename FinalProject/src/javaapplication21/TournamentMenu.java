@@ -15,7 +15,8 @@ import javax.swing.JFrame;
 public class TournamentMenu extends javax.swing.JFrame {
     Menu firstMenu;
     /**
-     * Creates new form TournamentMenu
+     * 
+     * @param in 
      */
     public TournamentMenu(Menu in) {
         initComponents();
@@ -46,7 +47,7 @@ public class TournamentMenu extends javax.swing.JFrame {
         EditTournamentButton = new javax.swing.JButton();
         GenerateTournamentButton = new javax.swing.JButton();
         ViewTournamentButton = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
+        tournamentSelection = new javax.swing.JComboBox();
         backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(onClose());
@@ -78,7 +79,7 @@ public class TournamentMenu extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tournament 1", "Tournament 2", "Tournament 3" }));
+        tournamentSelection.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tournament 1", "Tournament 2", "Tournament 3" }));
 
         backButton.setFont(new java.awt.Font("Cochin", 1, 14)); // NOI18N
         backButton.setText("BACK");
@@ -95,7 +96,7 @@ public class TournamentMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tournamentSelection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(GenerateTournamentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(EditTournamentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ViewTournamentButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE))
@@ -111,7 +112,7 @@ public class TournamentMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(backButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tournamentSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(EditTournamentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -123,20 +124,33 @@ public class TournamentMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * 
+ * @param evt 
+ */
     private void EditTournamentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditTournamentButtonActionPerformed
         // TODO add your handling code here:
-        EditTournament mysim = new EditTournament(this);
+        EditTournament mysim = new EditTournament(this, (Tournament)tournamentSelection.getSelectedItem());
         mysim.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_EditTournamentButtonActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void GenerateTournamentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateTournamentButtonActionPerformed
-        // TODO add your handling code here:
+        RunTournament mysim = new RunTournament(this, (Tournament)tournamentSelection.getSelectedItem());
+        mysim.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_GenerateTournamentButtonActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void ViewTournamentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTournamentButtonActionPerformed
-        // TODO add your handling code here:
+        ViewTournament mysim = new ViewTournament(this, (Tournament)tournamentSelection.getSelectedItem());
+        mysim.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_ViewTournamentButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -149,6 +163,6 @@ public class TournamentMenu extends javax.swing.JFrame {
     private javax.swing.JButton GenerateTournamentButton;
     private javax.swing.JButton ViewTournamentButton;
     private javax.swing.JButton backButton;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox tournamentSelection;
     // End of variables declaration//GEN-END:variables
 }
