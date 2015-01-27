@@ -10,13 +10,8 @@ package javaapplication21;
  *
  * @author katidid
  */
-public class Judge 
+public class Judge extends Person
 {
-    private String firstname;
-    private String lastname;
-    private String name = firstname + " " + lastname;
-    private String school;
-    private int id;
     
     Judge()
     {
@@ -28,86 +23,14 @@ public class Judge
      */
     Judge(String Name, String lastName, String School, int id)
     {
-        firstname = Name;
-        lastname = lastName;
+        firstName = Name;
+        this.lastName = lastName;
         school = School;
         this.id = id;
     }
-    /**
-     * 
-     * @return 
-     */
-    public String getName()
-    {
-        return name;
-    }
-    /**
-     * 
-     * @return 
-     */
-    public String getFirstname()
-    {
-        return firstname;
-    }
-    /**
-     * 
-     * @return 
-     */
-    public String getLastname()
-    {
-        return lastname;
-    }
-    /**
-     * 
-     * @return 
-     */
-    public String getSchool()
-    {
-        return school;
-    }
-    public int getID()
-    {
-        return id;
-    }
-    
-    /**
-     * 
-     * @param name 
-     */
-    public void setFirstname(String name)
-    {
-        firstname = name;
-    }
-    /**
-     * 
-     * @param name 
-     */
-    public void setLastname(String name)
-    {
-        lastname = name;
-    }
-    /**
-     * 
-     * @param name 
-     */
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    /**
-     * 
-     * @param school 
-     */
-    public void setSchool(String school)
-    {
-        this.school = school;
-    }
-    public void setID(int ID)
-    {
-        id = ID;
-    }
+
     public String toString()
     {
-        return String.format("%s; %s; %s; %d", firstname, lastname, school, id);
+        return String.format("%s; %s; %s; %d", firstName, lastName, school, id);
     }
 }

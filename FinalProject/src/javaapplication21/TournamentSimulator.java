@@ -456,12 +456,12 @@ public static Judge parseNewJudge(String line) throws NumberFormatException
         String delims = ";";
         String[] phrases = phrase.split(delims);
         
-        newJ.setFirstname(phrases[0].trim());
-        newJ.setLastname(phrases[0].trim());
+        newJ.setFirstName(phrases[0].trim());
+        newJ.setLastName(phrases[0].trim());
         newJ.setSchool(phrases[2].trim());
         
         int ID = Integer.parseInt(phrases[3].trim());
-        newJ.setID(ID);
+        newJ.setId(ID);
         
         return newJ;
     }

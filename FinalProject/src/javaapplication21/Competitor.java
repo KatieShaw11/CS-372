@@ -11,14 +11,9 @@ import java.util.ArrayList;
  *
  * @author katidid
  */
-public class Competitor 
+public class Competitor extends Person
 {
-    private String name;
-    private String firstName;
-    private String lastName;
-    private String school;
-    private int level;
-    private int id;
+    private int level; // aka division
     ArrayList<Integer> judgesIDHad = new ArrayList <>();
     ArrayList<Integer> comeptitorsIDHad = new ArrayList <>();
 
@@ -44,22 +39,7 @@ public class Competitor
     }
     
     //accessors
-    /**
-     * 
-     * @return 
-     */
-    public String getName()
-    {
-        return name;
-    }
-    /**
-     * 
-     * @return 
-     */
-    public String getSchool()
-    {
-        return school;
-    }
+
     /**
      * 
      * @return 
@@ -78,41 +58,6 @@ public class Competitor
     }
     /**
      * 
-     * @return 
-     */
-    public int getId()
-    {
-        return id;
-    }
-    
-    //modifiers
-    
-    /**
-     * 
-     * @param name 
-     */
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    public void setFirstName(String name)
-    {
-        firstName = name;
-    }
-    public void setLastName(String name)
-    {
-        lastName = name;
-    }
-    /**
-     * 
-     * @param school 
-     */
-    public void setSchool(String school)
-    {
-        this.school = school;
-    }
-    /**
-     * 
      * @param level 
      */
     public void setLevel(int level)
@@ -125,15 +70,7 @@ public class Competitor
      */
     public void addJudge(Judge newJudge)
     {
-        judgesIDHad.add(newJudge.getID());
-    }
-    /**
-     * 
-     * @param ID 
-     */
-    public void setId(int ID)
-    {
-        id = ID;
+        judgesIDHad.add(newJudge.getId());
     }
     
     /**
