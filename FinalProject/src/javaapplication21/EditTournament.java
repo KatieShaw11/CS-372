@@ -24,6 +24,7 @@ import javax.swing.DefaultListModel;
 public class EditTournament extends javax.swing.JFrame {
     TournamentMenu tournMenu;
     TourneyController controller = new TourneyController();
+    String currentTournamentName;
     /**
      * Creates new form EditTournament
      */
@@ -33,6 +34,7 @@ public class EditTournament extends javax.swing.JFrame {
         populateJudgeListBox();
         getContentPane().setBackground(Color.darkGray);
         tournMenu = in;
+        currentTournamentName = currentTournament.getName();
     }
     /**
      * 
@@ -105,6 +107,9 @@ public class EditTournament extends javax.swing.JFrame {
         AddedCompsPane1 = new javax.swing.JScrollPane();
         AddedJudges = new javax.swing.JList();
         backButton = new javax.swing.JButton();
+        AddJudgesToTournament = new javax.swing.JButton();
+        compLabel = new javax.swing.JLabel();
+        compLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,52 +193,75 @@ public class EditTournament extends javax.swing.JFrame {
                             }
                         });
 
+                        AddJudgesToTournament.setBackground(new java.awt.Color(255, 102, 102));
+                        AddJudgesToTournament.setFont(new java.awt.Font("Cochin", 0, 18)); // NOI18N
+                        AddJudgesToTournament.setText("Add Names to Tournament");
+                        AddJudgesToTournament.addActionListener(new java.awt.event.ActionListener() {
+                            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                AddJudgesToTournamentActionPerformed(evt);
+                            }
+                        });
+
+                        compLabel.setFont(new java.awt.Font("Cochin", 2, 24)); // NOI18N
+                        compLabel.setForeground(new java.awt.Color(255, 255, 255));
+                        compLabel.setText("Competitors");
+
+                        compLabel1.setFont(new java.awt.Font("Cochin", 2, 24)); // NOI18N
+                        compLabel1.setForeground(new java.awt.Color(255, 255, 255));
+                        compLabel1.setText("Judges");
+
                         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                         getContentPane().setLayout(layout);
                         layout.setHorizontalGroup(
                             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(MessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(58, 58, 58)
-                                        .addComponent(AddToTournament, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(22, 22, 22)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(AddedCompsPane, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                                            .addComponent(AddToTournament, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(ListOfCompetitors))
+                                        .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(MessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(AddedCompsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                                    .addComponent(ListOfCompetitors, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(AddedCompsPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(ListOfCompetitors1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(backButton)))
-                                .addContainerGap(263, Short.MAX_VALUE))
+                                            .addComponent(ListOfCompetitors1, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                                            .addComponent(AddedCompsPane1)
+                                            .addComponent(AddJudgesToTournament, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(17, 17, 17))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(backButton)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addComponent(compLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(compLabel1)
+                                .addGap(109, 109, 109))
                         );
                         layout.setVerticalGroup(
                             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(backButton)
-                                .addGap(13, 13, 13)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(AddToTournament)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ListOfCompetitors, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(ListOfCompetitors1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(37, 37, 37)
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(compLabel)
+                                    .addComponent(compLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(AddToTournament)
+                                    .addComponent(AddJudgesToTournament))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ListOfCompetitors1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ListOfCompetitors, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(AddedCompsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(AddedCompsPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                                 .addComponent(MessageLabel)
                                 .addContainerGap())
                         );
@@ -261,12 +289,12 @@ public class EditTournament extends javax.swing.JFrame {
             selectedComps.add(newComp);
         }
 
-        File tourneyOutFile = new File("/Users/katidid/desktop/TOURNAMENT.txt");
+        File tourneyCompOutFile = new File("/Users/katidid/desktop/"+currentTournamentName+ "_TOURNAMENTC.txt");
 
           
         try
         {
-            FileWriter writer = new FileWriter(tourneyOutFile, true);
+            FileWriter writer = new FileWriter(tourneyCompOutFile, true);
             try
             {
                 for (int i = 0; i < selectedComps.size(); i++)
@@ -296,8 +324,52 @@ public class EditTournament extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void AddJudgesToTournamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddJudgesToTournamentActionPerformed
+        ArrayList<Judge> selectedComps = new ArrayList <Judge>();
+        int numSelections = SelectListOfJudges.getSelectedIndices().length; // how many Competitors the user selected
+        int[] selectedIndices = new int[numSelections]; // which ones were selected
+        //MessageLabel.setText("" + numThings);
+        for (int i = 0; i < numSelections; i++)
+        {
+            selectedIndices[i] =  SelectListOfJudges.getSelectedIndices()[i]; // get which indices were selected
+        }
+        int whereSelectedIs;
+        for (int i = 0; i < numSelections; i++)
+        {
+            whereSelectedIs = selectedIndices[i];
+            Judge newComp = (Judge) SelectListOfJudges.getModel().getElementAt(whereSelectedIs);
+            selectedComps.add(newComp);
+        }
+
+        File tourneyJudgeOutFile = new File("/Users/katidid/desktop/"+currentTournamentName+ "_TOURNAMENTJ.txt");
+
+          
+        try
+        {
+            FileWriter writer = new FileWriter(tourneyJudgeOutFile, true);
+            try
+            {
+                for (int i = 0; i < selectedComps.size(); i++)
+                {
+                    writer.write(selectedComps.get(i).toString() + "\n");
+                    ((DefaultListModel)AddedJudges.getModel()).addElement(selectedComps.get(i));
+                }
+            }
+            catch(IOException ex)
+            {
+                MessageLabel.setText("Didn't output.");
+            }
+            writer.close();
+        }
+        catch(IOException ex)
+        {
+            MessageLabel.setText("Didn't make file");
+        }
+    }//GEN-LAST:event_AddJudgesToTournamentActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddJudgesToTournament;
     private javax.swing.JButton AddToTournament;
     private javax.swing.JList AddedComps;
     private javax.swing.JScrollPane AddedCompsPane;
@@ -309,5 +381,7 @@ public class EditTournament extends javax.swing.JFrame {
     private javax.swing.JList SelectListOfComps;
     private javax.swing.JList SelectListOfJudges;
     private javax.swing.JButton backButton;
+    private javax.swing.JLabel compLabel;
+    private javax.swing.JLabel compLabel1;
     // End of variables declaration//GEN-END:variables
 }

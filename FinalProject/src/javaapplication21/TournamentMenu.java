@@ -1,5 +1,11 @@
 package javaapplication21;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import static javaapplication21.NewTournament.parseNewTournament;
 import javax.swing.JFrame;
 
 /*
@@ -21,6 +27,12 @@ public class TournamentMenu extends javax.swing.JFrame {
     public TournamentMenu(Menu in) {
         initComponents();
         firstMenu = in;
+        ArrayList<Tournament> tournamentList = new ArrayList<>(); 
+        tournamentList = getTournaments();
+        for (int i = 0; i < tournamentList.size(); i++)
+        {
+            tournamentSelection.addItem(tournamentList.get(i));
+        }
     }
     /**
      * 
@@ -81,8 +93,6 @@ public class TournamentMenu extends javax.swing.JFrame {
                 ViewTournamentButtonActionPerformed(evt);
             }
         });
-
-        tournamentSelection.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tournament 1", "Tournament 2", "Tournament 3" }));
 
         backButton.setFont(new java.awt.Font("Cochin", 1, 14)); // NOI18N
         backButton.setText("BACK");
@@ -163,7 +173,30 @@ public class TournamentMenu extends javax.swing.JFrame {
         firstMenu.setVisible(true);
         dispose();
     }//GEN-LAST:event_backButtonActionPerformed
+    /**
+     * 
+     * @return 
+     */
+    public ArrayList<Tournament> getTournaments()
+    {
+        ArrayList<Tournament> tournamentList = new ArrayList<>();
+        File outFile = new File("/Users/katidid/desktop/TOURNAMENTS.txt");
 
+        try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
+        {
+            String line = null;
+            while ((line = reader.readLine()) != null) 
+            {
+                Tournament newTournament = parseNewTournament(line);  
+                tournamentList.add(newTournament);    
+            }
+        } 
+        catch (IOException x) 
+        {
+            System.err.format("IOException: %s%n", x);
+        }
+        return tournamentList;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditTournamentButton;
     private javax.swing.JButton GenerateTournamentButton;

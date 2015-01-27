@@ -404,7 +404,8 @@ public class TournamentSimulator extends javax.swing.JFrame {
         {
             String firstName = FirstNameTextField.getText();
             String lastName = LastNameTextField.getText();
-            String school = schoolComboBox.getSelectedItem().toString();
+            String school = parseNewSchool(schoolComboBox.getSelectedItem().toString()).getName();
+            
             int level;
             if(NoviceButton.isSelected())
                 level = 1;

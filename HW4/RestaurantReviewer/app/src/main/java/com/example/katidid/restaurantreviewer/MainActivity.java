@@ -143,7 +143,7 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, RestaurantViewerMain.class);
         startActivity(intent);
     }
-
+/*
     public File getAlbumStorageDir(String albumName)
     {
         // Get the directory for the user's public pictures directory.
@@ -162,5 +162,5 @@ public class MainActivity extends ActionBarActivity {
         is.read(data);
         os.write(data); is.close(); os.close();
     }
-
+*/
 }

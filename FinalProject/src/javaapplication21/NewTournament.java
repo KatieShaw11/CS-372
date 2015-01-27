@@ -6,6 +6,14 @@
 package javaapplication21;
 
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import static javaapplication21.TournamentSimulator.parseNewJudge;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -35,6 +43,7 @@ public class NewTournament extends javax.swing.JFrame {
         NameTextField = new javax.swing.JTextField();
         LocationTextField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
+        MessageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +65,9 @@ public class NewTournament extends javax.swing.JFrame {
             }
         });
 
+        MessageLabel.setForeground(new java.awt.Color(255, 0, 0));
+        MessageLabel.setText(".");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,14 +75,16 @@ public class NewTournament extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NewTournamentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(NameTextField)
-                            .addComponent(LocationTextField, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(backButton)))
+                        .addComponent(backButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MessageLabel)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(NewTournamentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(NameTextField)
+                                .addComponent(LocationTextField, javax.swing.GroupLayout.Alignment.TRAILING)))))
                 .addContainerGap(206, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -84,7 +98,9 @@ public class NewTournament extends javax.swing.JFrame {
                 .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addComponent(MessageLabel)
+                .addContainerGap())
         );
 
         pack();
@@ -95,9 +111,52 @@ public class NewTournament extends javax.swing.JFrame {
      */
     private void NewTournamentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewTournamentButtonActionPerformed
         Tournament newTourney = new Tournament(NameTextField.getText(), LocationTextField.getText());
+        ArrayList<Tournament> tournamentList = new ArrayList<>(); 
+        tournamentList = getTournaments();
+        File outFile = new File("/Users/katidid/desktop/TOURNAMENTS.txt");
+        tournamentList.add(newTourney); 
+        try
+        {
+            FileWriter writer = new FileWriter(outFile, true);
+            try
+            {
+                writer.write(newTourney.toString() + "\n");
+                
+            }
+            catch(IOException ex)
+            {
+                MessageLabel.setText("Didn't output.");
+            }
+            writer.close();
+        }
+        catch(IOException ex)
+        {
+            MessageLabel.setText("Didn't make file");
+        }
+
         firstMenu.setVisible(true);
         dispose();
     }//GEN-LAST:event_NewTournamentButtonActionPerformed
+    public ArrayList<Tournament> getTournaments()
+    {
+        ArrayList<Tournament> tournamentList = new ArrayList<>();
+        File outFile = new File("/Users/katidid/desktop/TOURNAMENTS.txt");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
+        {
+            String line = null;
+            while ((line = reader.readLine()) != null) 
+            {
+                Tournament newTournament = parseNewTournament(line);  
+                tournamentList.add(newTournament);    
+            }
+        } 
+        catch (IOException x) 
+        {
+            System.err.format("IOException: %s%n", x);
+        }
+        return tournamentList;
+    }
     /**
      * 
      * @param evt 
@@ -106,9 +165,25 @@ public class NewTournament extends javax.swing.JFrame {
         firstMenu.setVisible(true);
         dispose();
     }//GEN-LAST:event_backButtonActionPerformed
-
+    public static Tournament parseNewTournament(String line)
+    {
+        Tournament newT = new Tournament();
+        
+        String phrase = line;
+        String delims = ";";
+        String[] phrases = phrase.split(delims);
+        
+        newT.setName(phrases[0].trim());
+        newT.setLocation(phrases[1].trim());
+        
+//        int ID = Integer.parseInt(phrases[3].trim());
+//        newJ.setId(ID);
+        
+        return newT;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField LocationTextField;
+    private javax.swing.JLabel MessageLabel;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JButton NewTournamentButton;
     private javax.swing.JButton backButton;

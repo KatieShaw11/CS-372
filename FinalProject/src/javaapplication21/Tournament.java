@@ -112,4 +112,9 @@ public class Tournament
     {
         TournamentCompetitors.add(newC);
     }
+    
+    public String toString()
+    {
+        return String.format("%s; %s", name, location);
+    }
 }

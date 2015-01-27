@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.*;
 
 
 public class RestaurantViewerMain extends ActionBarActivity {
@@ -12,6 +13,9 @@ public class RestaurantViewerMain extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_viewer_main);
+        Restaurant rest1 = new Restaurant();
+        ExpandableListView rlist = (ExpandableListView) findViewById(R.id.restaurantList);
+
     }
 
 
