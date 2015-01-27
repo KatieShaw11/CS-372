@@ -18,16 +18,18 @@ import javax.swing.DefaultListModel;
  * @author katidid
  */
 public class TournamentSimulator extends javax.swing.JFrame {
+    Menu firstMenu;
     TourneyController controller = new TourneyController();
     int CompetitorYes = 2; // Check if adding a judge or competitor; 1 if true, 0 if false
     /**
      * Creates new form TournamentSimulator
      */
-    public TournamentSimulator() {
+    public TournamentSimulator(Menu in) {
         initComponents();
         populateListBox();
         populateJudgeListBox();
         getContentPane().setBackground(Color.darkGray);
+        firstMenu = in;
     }
     
     private void populateListBox()
@@ -139,11 +141,6 @@ public class TournamentSimulator extends javax.swing.JFrame {
                     FirstNameTextFieldMouseClicked(evt);
                 }
             });
-            FirstNameTextField.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    FirstNameTextFieldActionPerformed(evt);
-                }
-            });
 
             buttonGroup1.add(NoviceButton);
             NoviceButton.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
@@ -204,11 +201,6 @@ public class TournamentSimulator extends javax.swing.JFrame {
 
                 schoolComboBox.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
                 schoolComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Whitworth University", "Idaho State", "Arizona University", "Nampa University", "Hawaii State", "Western Washington", " " }));
-                schoolComboBox.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        schoolComboBoxActionPerformed(evt);
-                    }
-                });
 
                 LastNameTextField.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
                 LastNameTextField.setText("Last Name");
@@ -217,14 +209,14 @@ public class TournamentSimulator extends javax.swing.JFrame {
                         LastNameTextFieldMouseClicked(evt);
                     }
                 });
-                LastNameTextField.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        LastNameTextFieldActionPerformed(evt);
-                    }
-                });
 
                 backButton.setFont(new java.awt.Font("Cochin", 1, 14)); // NOI18N
                 backButton.setText("BACK");
+                backButton.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        backButtonActionPerformed(evt);
+                    }
+                });
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
@@ -420,14 +412,6 @@ public class TournamentSimulator extends javax.swing.JFrame {
         NoviceButton.setVisible(false);
     }//GEN-LAST:event_AddJudgeRButtonActionPerformed
 
-    private void schoolComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schoolComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_schoolComboBoxActionPerformed
-
-    private void FirstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FirstNameTextFieldActionPerformed
-        FirstNameTextField.setText("");
-    }//GEN-LAST:event_FirstNameTextFieldActionPerformed
-
     private void FirstNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FirstNameTextFieldMouseClicked
         FirstNameTextField.setText("");
     }//GEN-LAST:event_FirstNameTextFieldMouseClicked
@@ -436,9 +420,10 @@ public class TournamentSimulator extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_LastNameTextFieldMouseClicked
 
-    private void LastNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LastNameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LastNameTextFieldActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        firstMenu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
 public static Competitor parseNewCompetitor(String line) throws NumberFormatException
     {
         Competitor newStu = new Competitor();
@@ -477,40 +462,6 @@ public boolean allFieldsFilled() // So the exception message can be specific
             // about the type of error it's encountering (wrong text or no text)
     {
         return FirstNameTextField.getText().length() != 0; // COME BACK TO THISSSSSSSS!
-    }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TournamentSimulator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TournamentSimulator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TournamentSimulator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TournamentSimulator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TournamentSimulator().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

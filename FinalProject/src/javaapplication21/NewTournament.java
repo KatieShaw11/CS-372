@@ -12,13 +12,14 @@ import java.awt.Color;
  * @author katidid
  */
 public class NewTournament extends javax.swing.JFrame {
-
+    Menu firstMenu;
     /**
      * Creates new form NewTournament
      */
-    public NewTournament() {
+    public NewTournament(Menu in) {
         initComponents();
         getContentPane().setBackground(Color.darkGray);
+        firstMenu = in;
     }
 
     /**
@@ -33,6 +34,7 @@ public class NewTournament extends javax.swing.JFrame {
         NewTournamentButton = new javax.swing.JButton();
         NameTextField = new javax.swing.JTextField();
         LocationTextField = new javax.swing.JTextField();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,22 +59,36 @@ public class NewTournament extends javax.swing.JFrame {
             }
         });
 
+        backButton.setText("BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(NewTournamentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NameTextField)
-                    .addComponent(LocationTextField, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(NewTournamentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(NameTextField)
+                            .addComponent(LocationTextField, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backButton)))
                 .addContainerGap(206, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addContainerGap()
+                .addComponent(backButton)
+                .addGap(12, 12, 12)
                 .addComponent(NewTournamentButton)
                 .addGap(18, 18, 18)
                 .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -94,49 +110,19 @@ public class NewTournament extends javax.swing.JFrame {
 
     private void NewTournamentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewTournamentButtonActionPerformed
         Tournament newTourney = new Tournament(NameTextField.getText(), LocationTextField.getText());
-        EditTournament mysim = new EditTournament();
-        mysim.setVisible(true);
-        this.setVisible(false);
+        firstMenu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_NewTournamentButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewTournament.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewTournament.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewTournament.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewTournament.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NewTournament().setVisible(true);
-            }
-        });
-    }
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        firstMenu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField LocationTextField;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JButton NewTournamentButton;
+    private javax.swing.JButton backButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -117,7 +117,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        NewTournament mysim = new NewTournament();
+        NewTournament mysim = new NewTournament(this);
         mysim.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -128,7 +128,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void AddPeopleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPeopleButtonActionPerformed
         // TODO add your handling code here:
-        TournamentSimulator mysim = new TournamentSimulator();
+        TournamentSimulator mysim = new TournamentSimulator(this);
         mysim.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_AddPeopleButtonActionPerformed
