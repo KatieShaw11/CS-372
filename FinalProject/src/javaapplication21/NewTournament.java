@@ -5,6 +5,8 @@
  */
 package javaapplication21;
 
+import java.awt.Color;
+
 /**
  *
  * @author katidid
@@ -16,6 +18,7 @@ public class NewTournament extends javax.swing.JFrame {
      */
     public NewTournament() {
         initComponents();
+        getContentPane().setBackground(Color.darkGray);
     }
 
     /**
@@ -31,7 +34,7 @@ public class NewTournament extends javax.swing.JFrame {
         NameTextField = new javax.swing.JTextField();
         LocationTextField = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         NewTournamentButton.setText("New Tournament");
         NewTournamentButton.addActionListener(new java.awt.event.ActionListener() {

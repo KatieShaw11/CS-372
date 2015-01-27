@@ -5,6 +5,7 @@
  */
 package javaapplication21;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -26,6 +27,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
         initComponents();
         populateListBox();
         populateJudgeListBox();
+        getContentPane().setBackground(Color.darkGray);
     }
     
     private void populateListBox()
@@ -88,8 +90,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
         newPersonButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListOfCompetitors = new javax.swing.JList();
-        NameTextField = new javax.swing.JTextField();
-        SchoolTextField = new javax.swing.JTextField();
+        FirstNameTextField = new javax.swing.JTextField();
         NoviceButton = new javax.swing.JRadioButton();
         JuniorButton = new javax.swing.JRadioButton();
         OpenButton = new javax.swing.JRadioButton();
@@ -98,10 +99,13 @@ public class TournamentSimulator extends javax.swing.JFrame {
         AddJudgeRButton = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         ListOfJudges = new javax.swing.JList();
-        jComboBox1 = new javax.swing.JComboBox();
+        schoolComboBox = new javax.swing.JComboBox();
+        LastNameTextField = new javax.swing.JTextField();
+        backButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        newPersonButton.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
         newPersonButton.setText("Add competitor");
         newPersonButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,22 +132,40 @@ public class TournamentSimulator extends javax.swing.JFrame {
             });
             jScrollPane1.setViewportView(ListOfCompetitors);
 
-            NameTextField.setText("Name");
-
-            SchoolTextField.setText("School");
+            FirstNameTextField.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
+            FirstNameTextField.setText("First Name");
+            FirstNameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    FirstNameTextFieldMouseClicked(evt);
+                }
+            });
+            FirstNameTextField.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    FirstNameTextFieldActionPerformed(evt);
+                }
+            });
 
             buttonGroup1.add(NoviceButton);
+            NoviceButton.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
+            NoviceButton.setForeground(new java.awt.Color(255, 255, 255));
             NoviceButton.setText("Novice");
 
             buttonGroup1.add(JuniorButton);
+            JuniorButton.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
+            JuniorButton.setForeground(new java.awt.Color(255, 255, 255));
             JuniorButton.setText("Junior");
 
             buttonGroup1.add(OpenButton);
+            OpenButton.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
+            OpenButton.setForeground(new java.awt.Color(255, 255, 255));
             OpenButton.setText("Open");
 
+            MessageLabel.setForeground(new java.awt.Color(255, 0, 51));
             MessageLabel.setText("Message");
 
             AddTypeBG.add(AddCompRButton);
+            AddCompRButton.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
+            AddCompRButton.setForeground(new java.awt.Color(255, 255, 255));
             AddCompRButton.setText("Add Competitor");
             AddCompRButton.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,6 +174,8 @@ public class TournamentSimulator extends javax.swing.JFrame {
             });
 
             AddTypeBG.add(AddJudgeRButton);
+            AddJudgeRButton.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
+            AddJudgeRButton.setForeground(new java.awt.Color(255, 255, 255));
             AddJudgeRButton.setText("Add Judge");
             AddJudgeRButton.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,12 +202,29 @@ public class TournamentSimulator extends javax.swing.JFrame {
                 });
                 jScrollPane2.setViewportView(ListOfJudges);
 
-                jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-                jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+                schoolComboBox.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
+                schoolComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Whitworth University", "Idaho State", "Arizona University", "Nampa University", "Hawaii State", "Western Washington", " " }));
+                schoolComboBox.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        jComboBox1ActionPerformed(evt);
+                        schoolComboBoxActionPerformed(evt);
                     }
                 });
+
+                LastNameTextField.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
+                LastNameTextField.setText("Last Name");
+                LastNameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        LastNameTextFieldMouseClicked(evt);
+                    }
+                });
+                LastNameTextField.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        LastNameTextFieldActionPerformed(evt);
+                    }
+                });
+
+                backButton.setFont(new java.awt.Font("Cochin", 1, 14)); // NOI18N
+                backButton.setText("BACK");
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
@@ -192,16 +233,15 @@ public class TournamentSimulator extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(newPersonButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(NameTextField)
-                                .addComponent(SchoolTextField))
+                            .addComponent(newPersonButton)
                             .addComponent(NoviceButton)
                             .addComponent(JuniorButton)
                             .addComponent(OpenButton)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(schoolComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FirstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(298, 298, 298))
@@ -211,7 +251,8 @@ public class TournamentSimulator extends javax.swing.JFrame {
                                 .addGap(188, 188, 188)
                                 .addComponent(MessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(168, 168, 168)
+                                .addComponent(backButton)
+                                .addGap(71, 71, 71)
                                 .addComponent(AddCompRButton)
                                 .addGap(18, 18, 18)
                                 .addComponent(AddJudgeRButton)))
@@ -220,14 +261,16 @@ public class TournamentSimulator extends javax.swing.JFrame {
                 layout.setVerticalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(72, 72, 72)
-                                .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(SchoolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(backButton)
+                                .addGap(37, 37, 37)
+                                .addComponent(FirstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13)
+                                .addComponent(schoolComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(NoviceButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -237,7 +280,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(newPersonButton))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(AddCompRButton)
                                     .addComponent(AddJudgeRButton))
@@ -270,8 +313,9 @@ public class TournamentSimulator extends javax.swing.JFrame {
     File studentOutFile = new File("/Users/katidid/desktop/COMPETITORS.txt");
         try
         {
-            String name = NameTextField.getText();
-            String school = SchoolTextField.getText();
+            String name = FirstNameTextField.getText();
+            //String school = SchoolTextField.getText();
+            String school = schoolComboBox.getSelectedItem().toString();
             int level;
             if(NoviceButton.isSelected())
                 level = 1;
@@ -321,8 +365,8 @@ public class TournamentSimulator extends javax.swing.JFrame {
         File judgeOutFile = new File("/Users/katidid/desktop/JUDGES.txt");
         try
         {
-            String name = NameTextField.getText();
-            String school = SchoolTextField.getText();
+            String name = FirstNameTextField.getText();
+            String school = schoolComboBox.getSelectedItem().toString();
             int level;
 
             Judge newJudge = new Judge(name, school);
@@ -376,9 +420,25 @@ public class TournamentSimulator extends javax.swing.JFrame {
         NoviceButton.setVisible(false);
     }//GEN-LAST:event_AddJudgeRButtonActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void schoolComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schoolComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_schoolComboBoxActionPerformed
+
+    private void FirstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FirstNameTextFieldActionPerformed
+        FirstNameTextField.setText("");
+    }//GEN-LAST:event_FirstNameTextFieldActionPerformed
+
+    private void FirstNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FirstNameTextFieldMouseClicked
+        FirstNameTextField.setText("");
+    }//GEN-LAST:event_FirstNameTextFieldMouseClicked
+
+    private void LastNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LastNameTextFieldMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LastNameTextFieldMouseClicked
+
+    private void LastNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LastNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LastNameTextFieldActionPerformed
 public static Competitor parseNewCompetitor(String line) throws NumberFormatException
     {
         Competitor newStu = new Competitor();
@@ -416,8 +476,7 @@ public static Judge parseNewJudge(String line) throws NumberFormatException
 public boolean allFieldsFilled() // So the exception message can be specific 
             // about the type of error it's encountering (wrong text or no text)
     {
-        return NameTextField.getText().length() != 0 && 
-                SchoolTextField.getText().length() != 0; // COME BACK TO THISSSSSSSS!
+        return FirstNameTextField.getText().length() != 0; // COME BACK TO THISSSSSSSS!
     }
     /**
      * @param args the command line arguments
@@ -458,18 +517,19 @@ public boolean allFieldsFilled() // So the exception message can be specific
     private javax.swing.JRadioButton AddCompRButton;
     private javax.swing.JRadioButton AddJudgeRButton;
     private javax.swing.ButtonGroup AddTypeBG;
+    private javax.swing.JTextField FirstNameTextField;
     private javax.swing.JRadioButton JuniorButton;
+    private javax.swing.JTextField LastNameTextField;
     private javax.swing.JList ListOfCompetitors;
     private javax.swing.JList ListOfJudges;
     private javax.swing.JLabel MessageLabel;
-    private javax.swing.JTextField NameTextField;
     private javax.swing.JRadioButton NoviceButton;
     private javax.swing.JRadioButton OpenButton;
-    private javax.swing.JTextField SchoolTextField;
+    private javax.swing.JButton backButton;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton newPersonButton;
+    private javax.swing.JComboBox schoolComboBox;
     // End of variables declaration//GEN-END:variables
 }
