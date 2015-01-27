@@ -79,6 +79,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/ratingBar"
-        android:layout_alignEnd="@+id/ratingBar" />
+        android:layout_alignEnd="@+id/ratingBar"
+        android:onClick="goToViewRest"
+        android:enabled="true" />
 
 </RelativeLayout>

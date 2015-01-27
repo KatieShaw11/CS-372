@@ -1,7 +1,7 @@
 package com.example.katidid.restaurantreviewer;
 
 import android.annotation.TargetApi;
-import android.os.Build;
+import android.os.*;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import java.io.*;
+import android.content.Intent;
+import android.util.*;
 
 import java.util.ArrayList;
 
@@ -134,6 +136,31 @@ public class MainActivity extends ActionBarActivity {
             return null;
         }
         return newRest;
+    }
+
+    public void goToViewRest(View view)
+    {
+        Intent intent = new Intent(this, RestaurantViewerMain.class);
+        startActivity(intent);
+    }
+
+    public File getAlbumStorageDir(String albumName)
+    {
+        // Get the directory for the user's public pictures directory.
+        File file = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), albumName); if (!file.mkdirs()) {
+            Log.e(LOG_TAG, "Directory not created"); }
+        return file;
+    }
+
+    void createExternalStoragePrivateFile() throws IOException
+    {
+        // Write private file on external storage.
+        File file = new File(getExternalFilesDir(null), "DemoFile.jpg");
+        InputStream is = getResources().openRawResource(R.drawable.balloons); OutputStream os = new FileOutputStream(file);
+        byte[] data = new byte[is.available()];
+        is.read(data);
+        os.write(data); is.close(); os.close();
     }
 
 }

@@ -31,6 +31,15 @@ public class TournamentSimulator extends javax.swing.JFrame {
         populateSchoolBox();
         getContentPane().setBackground(Color.darkGray);
         firstMenu = in;
+        
+        FirstNameTextField.setVisible(false);
+        LastNameTextField.setVisible(false);
+        schoolComboBox.setVisible(false);
+        divisionLabel.setVisible(false);
+        NoviceButton.setVisible(false);
+        JuniorButton.setVisible(false);
+        OpenButton.setVisible(false);
+        newPersonButton.setVisible(false);
     }
     /**
      * 
@@ -133,11 +142,14 @@ public class TournamentSimulator extends javax.swing.JFrame {
         LastNameTextField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
         AddSchoolRButton = new javax.swing.JRadioButton();
+        compNamesLabel = new javax.swing.JLabel();
+        divisionLabel = new javax.swing.JLabel();
+        compNamesLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         newPersonButton.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
-        newPersonButton.setText("Add competitor");
+        newPersonButton.setText("Add");
         newPersonButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newPersonButtonActionPerformed(evt);
@@ -189,20 +201,24 @@ public class TournamentSimulator extends javax.swing.JFrame {
             MessageLabel.setForeground(new java.awt.Color(255, 0, 51));
             MessageLabel.setText(".");
 
+            AddCompRButton.setBackground(new java.awt.Color(204, 204, 204));
             AddTypeBG.add(AddCompRButton);
-            AddCompRButton.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
+            AddCompRButton.setFont(new java.awt.Font("Cochin", 1, 24)); // NOI18N
             AddCompRButton.setForeground(new java.awt.Color(255, 255, 255));
             AddCompRButton.setText("Add Competitor");
+            AddCompRButton.setOpaque(true);
             AddCompRButton.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     AddCompRButtonActionPerformed(evt);
                 }
             });
 
+            AddJudgeRButton.setBackground(new java.awt.Color(204, 204, 204));
             AddTypeBG.add(AddJudgeRButton);
-            AddJudgeRButton.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
+            AddJudgeRButton.setFont(new java.awt.Font("Cochin", 1, 24)); // NOI18N
             AddJudgeRButton.setForeground(new java.awt.Color(255, 255, 255));
             AddJudgeRButton.setText("Add Judge");
+            AddJudgeRButton.setOpaque(true);
             AddJudgeRButton.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     AddJudgeRButtonActionPerformed(evt);
@@ -246,49 +262,71 @@ public class TournamentSimulator extends javax.swing.JFrame {
                     }
                 });
 
+                AddSchoolRButton.setBackground(new java.awt.Color(204, 204, 204));
                 AddTypeBG.add(AddSchoolRButton);
-                AddSchoolRButton.setFont(new java.awt.Font("Cochin", 0, 14)); // NOI18N
+                AddSchoolRButton.setFont(new java.awt.Font("Cochin", 1, 24)); // NOI18N
                 AddSchoolRButton.setForeground(new java.awt.Color(255, 255, 255));
                 AddSchoolRButton.setText("Add School");
+                AddSchoolRButton.setOpaque(true);
                 AddSchoolRButton.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         AddSchoolRButtonActionPerformed(evt);
                     }
                 });
 
+                compNamesLabel.setFont(new java.awt.Font("Cochin", 0, 18)); // NOI18N
+                compNamesLabel.setForeground(new java.awt.Color(255, 255, 255));
+                compNamesLabel.setText("Full List of Competitors");
+
+                divisionLabel.setFont(new java.awt.Font("Cochin", 1, 16)); // NOI18N
+                divisionLabel.setForeground(new java.awt.Color(255, 255, 255));
+                divisionLabel.setText("Division:");
+
+                compNamesLabel2.setFont(new java.awt.Font("Cochin", 0, 18)); // NOI18N
+                compNamesLabel2.setForeground(new java.awt.Color(255, 255, 255));
+                compNamesLabel2.setText("Full List of Judges");
+
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newPersonButton)
-                            .addComponent(NoviceButton)
-                            .addComponent(JuniorButton)
-                            .addComponent(OpenButton)
-                            .addComponent(schoolComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FirstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(298, 298, 298))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(188, 188, 188)
                                 .addComponent(MessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(backButton)
-                                .addGap(71, 71, 71)
-                                .addComponent(AddCompRButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(AddJudgeRButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(AddSchoolRButton)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(NoviceButton)
+                                                .addComponent(JuniorButton)
+                                                .addComponent(OpenButton)
+                                                .addComponent(schoolComboBox, 0, 164, Short.MAX_VALUE)
+                                                .addComponent(FirstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(LastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(newPersonButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(divisionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(backButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(AddCompRButton, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(82, 82, 82)
+                                        .addComponent(AddJudgeRButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                        .addComponent(AddSchoolRButton))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(compNamesLabel))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(compNamesLabel2)
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addContainerGap(33, Short.MAX_VALUE))
                 );
                 layout.setVerticalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,24 +342,30 @@ public class TournamentSimulator extends javax.swing.JFrame {
                                 .addGap(13, 13, 13)
                                 .addComponent(schoolComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(divisionLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                                 .addComponent(NoviceButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(JuniorButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(OpenButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(newPersonButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(newPersonButton)
+                                .addGap(25, 25, 25))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(AddCompRButton)
                                     .addComponent(AddJudgeRButton)
                                     .addComponent(AddSchoolRButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(compNamesLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(compNamesLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)))
                         .addComponent(MessageLabel)
                         .addContainerGap())
                 );
@@ -504,9 +548,15 @@ public class TournamentSimulator extends javax.swing.JFrame {
         OpenButton.setVisible(true);
         NoviceButton.setVisible(true);
         schoolComboBox.setVisible(true);
+        FirstNameTextField.setVisible(true);
         LastNameTextField.setVisible(true);
         FirstNameTextField.setText("First Name");
         LastNameTextField.setText("Last Name");
+        divisionLabel.setVisible(true);
+        NoviceButton.setVisible(true);
+        JuniorButton.setVisible(true);
+        OpenButton.setVisible(true);
+        newPersonButton.setVisible(true);
     }//GEN-LAST:event_AddCompRButtonActionPerformed
     /**
      * 
@@ -602,7 +652,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
         String[] phrases = phrase.split(delims);
         
         newJ.setFirstName(phrases[0].trim());
-        newJ.setLastName(phrases[0].trim());
+        newJ.setLastName(phrases[1].trim());
         newJ.setSchool(phrases[2].trim());
         
         int ID = Integer.parseInt(phrases[3].trim());
@@ -610,6 +660,12 @@ public class TournamentSimulator extends javax.swing.JFrame {
         
         return newJ;
     }
+    /**
+     * 
+     * @param line
+     * @return
+     * @throws NumberFormatException 
+     */
     public static School parseNewSchool(String line) throws NumberFormatException
     {
         School newS = new School();
@@ -650,6 +706,9 @@ public class TournamentSimulator extends javax.swing.JFrame {
     private javax.swing.JRadioButton OpenButton;
     private javax.swing.JButton backButton;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel compNamesLabel;
+    private javax.swing.JLabel compNamesLabel2;
+    private javax.swing.JLabel divisionLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton newPersonButton;
