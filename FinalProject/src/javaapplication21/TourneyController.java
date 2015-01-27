@@ -18,40 +18,68 @@ public class TourneyController
     ArrayList<Competitor> competitorList= new ArrayList <>();
     ArrayList<Judge> judgeList= new ArrayList <>();
     ArrayList<Tournament> tournamentList = new ArrayList<>();
-    
+    /**
+     * 
+     * @return 
+     */
     public int getNumComps()
     {
         return competitorList.size();
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public int getNumJudges()
     {
         return judgeList.size();
     }
-    
+    /**
+     * 
+     * @param i
+     * @return 
+     */
     public Competitor getCompetitor(int i)
     {
         return competitorList.get(i);
     }
-    
+    /**
+     * 
+     * @param i
+     * @return 
+     */
     public Judge getJudge(int i)
     {
         return judgeList.get(i);
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Competitor> getCompetitorList()
     {
         return competitorList;
     }
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Judge> getJudgeList()
     {
         return judgeList;
     }
-    
+    /**
+     * 
+     * @param comp 
+     */
     public void addStu(Competitor comp)
     {
         competitorList.add(comp);
     }
+    /**
+     * 
+     * @param j 
+     */
     public void addJudge(Judge j)
     {
         judgeList.add(j);

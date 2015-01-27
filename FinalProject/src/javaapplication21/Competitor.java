@@ -24,21 +24,21 @@ public class Competitor extends Person
     {
         
     }
-    /**
-     * 
-     * @param name
-     * @param school
-     * @param level 
-     */
-    Competitor(String firstName, String lastName, String school, int level)
+/**
+ * 
+ * @param firstName
+ * @param lastName
+ * @param school
+ * @param level 
+ */
+    Competitor(String firstName, String lastName, String school, int level, int id)
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.school = school;
         this.level = level;
+        this.id = id;
     }
-    
-    //accessors
 
     /**
      * 

@@ -46,18 +46,8 @@ public class NewTournament extends javax.swing.JFrame {
         });
 
         NameTextField.setText("Name");
-        NameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NameTextFieldActionPerformed(evt);
-            }
-        });
 
         LocationTextField.setText("Location");
-        LocationTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LocationTextFieldActionPerformed(evt);
-            }
-        });
 
         backButton.setText("BACK");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -99,21 +89,19 @@ public class NewTournament extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void NameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NameTextFieldActionPerformed
-
-    private void LocationTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocationTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LocationTextFieldActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     */
     private void NewTournamentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewTournamentButtonActionPerformed
         Tournament newTourney = new Tournament(NameTextField.getText(), LocationTextField.getText());
         firstMenu.setVisible(true);
         dispose();
     }//GEN-LAST:event_NewTournamentButtonActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         firstMenu.setVisible(true);
         dispose();

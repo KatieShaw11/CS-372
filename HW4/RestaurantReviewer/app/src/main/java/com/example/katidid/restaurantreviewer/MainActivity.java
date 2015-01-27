@@ -69,7 +69,7 @@ public class MainActivity extends ActionBarActivity {
             }
             catch(IOException ex)
             {
-                System.out.println("Didn't output.");
+                MessageLabel.setText("Didn't output.");
             }
             writer.close();
         }

@@ -2,11 +2,7 @@ package javaapplication21;
 
 import java.awt.Color;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /**
  *
@@ -118,27 +114,37 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         NewTournament mysim = new NewTournament(this);
         mysim.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     */
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_quitButtonActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     */
     private void AddPeopleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPeopleButtonActionPerformed
         // TODO add your handling code here:
         TournamentSimulator mysim = new TournamentSimulator(this);
         mysim.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_AddPeopleButtonActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     */
     private void editTournamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTournamentActionPerformed
-        
         TournamentMenu mysim = new TournamentMenu(this);
         mysim.setVisible(true);
         this.setVisible(false);

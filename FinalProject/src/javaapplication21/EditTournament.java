@@ -34,6 +34,9 @@ public class EditTournament extends javax.swing.JFrame {
         getContentPane().setBackground(Color.darkGray);
         tournMenu = in;
     }
+    /**
+     * 
+     */
     private void populateListBox()
     {
         File outFile = new File("/Users/katidid/desktop/COMPETITORS.txt");
@@ -55,6 +58,9 @@ public class EditTournament extends javax.swing.JFrame {
             }
         }
     }
+    /**
+     * 
+     */
     private void populateJudgeListBox()
     {
         File outFile = new File("/Users/katidid/desktop/JUDGES.txt");
@@ -234,7 +240,10 @@ public class EditTournament extends javax.swing.JFrame {
 
                         pack();
                     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * 
+     * @param evt 
+     */
     private void AddToTournamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddToTournamentActionPerformed
         ArrayList<Competitor> selectedComps = new ArrayList <Competitor>();
         int numSelections = SelectListOfComps.getSelectedIndices().length; // how many Competitors the user selected
@@ -251,10 +260,7 @@ public class EditTournament extends javax.swing.JFrame {
             Competitor newComp = (Competitor) SelectListOfComps.getModel().getElementAt(whereSelectedIs);
             selectedComps.add(newComp);
         }
-//        for(int i = 0; i < selectedComps.size(); i++)
-//        {
-//            ((DefaultListModel)AddedComps.getModel()).addElement(selectedComps.get(i));
-//        }
+
         File tourneyOutFile = new File("/Users/katidid/desktop/TOURNAMENT.txt");
 
           
@@ -281,7 +287,10 @@ public class EditTournament extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_AddToTournamentActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         tournMenu.setVisible(true);
         dispose();

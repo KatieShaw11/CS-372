@@ -22,7 +22,10 @@ public class TournamentMenu extends javax.swing.JFrame {
         initComponents();
         firstMenu = in;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     private int onClose() {
         try{
         firstMenu.setVisible(true);
@@ -124,35 +127,38 @@ public class TournamentMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/**
- * 
- * @param evt 
- */
+    /**
+     * 
+     * @param evt 
+     */
     private void EditTournamentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditTournamentButtonActionPerformed
         // TODO add your handling code here:
         EditTournament mysim = new EditTournament(this, (Tournament)tournamentSelection.getSelectedItem());
         mysim.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_EditTournamentButtonActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     * 
+     * @param evt 
+     */
     private void GenerateTournamentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateTournamentButtonActionPerformed
         RunTournament mysim = new RunTournament(this, (Tournament)tournamentSelection.getSelectedItem());
         mysim.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_GenerateTournamentButtonActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     * 
+     * @param evt 
+     */
     private void ViewTournamentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTournamentButtonActionPerformed
         ViewTournament mysim = new ViewTournament(this, (Tournament)tournamentSelection.getSelectedItem());
         mysim.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_ViewTournamentButtonActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         firstMenu.setVisible(true);
         dispose();

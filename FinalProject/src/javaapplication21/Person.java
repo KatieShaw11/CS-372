@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package javaapplication21;
 
-import java.util.ArrayList;
+package javaapplication21;
 
 /**
  *
@@ -28,15 +22,17 @@ public class Person
     }
     /**
      * 
-     * @param name
+     * @param firstName
+     * @param lastName
      * @param school
-     * @param level 
+     * @param id 
      */
-    Person(String firstName, String lastName, String school, int level)
+    Person(String firstName, String lastName, String school, int id)
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.school = school;
+        this.id = id;
     }
     
     //accessors
