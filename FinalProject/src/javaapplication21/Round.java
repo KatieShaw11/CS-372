@@ -51,13 +51,18 @@ public class Round
     }
     public String toString()
     {
-        return String.format("%d; %d; %d;", comp1, comp2, roundNum);
+        String name1 = findCompetitor(comp1).getName();
+        String name2 = findCompetitor(comp2).getName();
+        String school1 = findCompetitor(comp1).getSchool();
+        String school2 = findCompetitor(comp2).getSchool();
+
+        return String.format("%s, %s vs. %s, %s; %d;", name1, school1, name2, school2, roundNum);
     }
     
-    private String findCompetitorName(int compNum)
+    private Competitor findCompetitor(int compNum)
     {
         File outFile = new File("/Users/katidid/desktop/COMPETITORS.txt");
-        ArrayList<Competitor> eventList= new ArrayList <Competitor>();
+        ArrayList<Competitor> compList= new ArrayList <Competitor>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
         {
@@ -65,6 +70,7 @@ public class Round
             while ((line = reader.readLine()) != null) 
             {
                 Competitor newCompetitor = parseNewCompetitor(line); 
+                compList.add(newCompetitor);
             }
         } 
         catch (IOException x) 
@@ -72,5 +78,13 @@ public class Round
             System.err.format("IOException: %s%n", x);
         }
         
+        for (int i = 0; i < compList.size(); i++)
+        {
+            if (compList.get(i).getId() == compNum)
+            {
+                return compList.get(i);
+            }
+        }
+        return null;
     }
 }
