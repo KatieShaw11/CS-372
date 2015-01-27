@@ -68,6 +68,10 @@ public class Tournament
     {
         return TournamentCompetitors;
     }
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Judge> getTournamentJudges()
     {
         return TournamentJudges;
@@ -112,7 +116,10 @@ public class Tournament
     {
         TournamentCompetitors.add(newC);
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public String toString()
     {
         return String.format("%s; %s", name, location);

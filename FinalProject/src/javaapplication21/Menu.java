@@ -3,7 +3,6 @@ package javaapplication21;
 import java.awt.Color;
 
 
-
 /**
  *
  * @author katidid
@@ -57,7 +56,7 @@ public class Menu extends javax.swing.JFrame {
 
         AddPeopleButton.setBackground(new java.awt.Color(255, 153, 153));
         AddPeopleButton.setFont(new java.awt.Font("Cochin", 1, 18)); // NOI18N
-        AddPeopleButton.setText("Add Persons");
+        AddPeopleButton.setText("Add Competitors, Judges, and Schools");
         AddPeopleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddPeopleButtonActionPerformed(evt);

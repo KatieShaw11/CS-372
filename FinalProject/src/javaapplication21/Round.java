@@ -22,33 +22,61 @@ public class Round
     private int comp1;
     private int comp2;
     private int roundNum;
+    /**
+     * 
+     */
     public Round()
     {
         
     }
+    /**
+     * 
+     * @param comp1
+     * @param comp2
+     * @param roundNum 
+     */
     public Round (int comp1, int comp2, int roundNum)
     {
         this.comp1 = comp1;
         this.comp1 = comp1;
         this.roundNum = roundNum;
     }
-    
+    /**
+     * 
+     * @param c 
+     */
     public void setC1(int c)
     {
         comp1 = c;
     }
+    /**
+     * 
+     * @param c 
+     */
     public void setC2(int c)
     {
         comp2 = c;
     }
+    /**
+     * 
+     * @param r 
+     */
     public void setRound(int r)
     {
         roundNum = r;
     }
+    /**
+     * 
+     * @return 
+     */
     public int getRound()
     {
         return roundNum;
     }
+    /**
+     * 
+     * @return 
+     */
     public String toString()
     {
         String name1 = findCompetitor(comp1).getName();
@@ -58,10 +86,14 @@ public class Round
 
         return String.format("%s, %s vs. %s, %s; %d;", name1, school1, name2, school2, roundNum);
     }
-    
+    /**
+     * 
+     * @param compNum
+     * @return 
+     */
     private Competitor findCompetitor(int compNum)
     {
-        File outFile = new File("/Users/katidid/desktop/COMPETITORS.txt");
+        File outFile = new File("COMPETITORS.txt");
         ArrayList<Competitor> compList= new ArrayList <Competitor>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 

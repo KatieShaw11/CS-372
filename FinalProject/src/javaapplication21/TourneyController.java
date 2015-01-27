@@ -84,6 +84,7 @@ public class TourneyController
     {
         judgeList.add(j);
     }
+    // Possibly implement eventually to cut down on repetitive code?
     
 //    public static void outputToFile(Object<?> newEvent, FileWriter writer)
 //    {

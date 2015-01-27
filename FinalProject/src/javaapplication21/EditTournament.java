@@ -41,7 +41,7 @@ public class EditTournament extends javax.swing.JFrame {
      */
     private void populateListBox()
     {
-        File outFile = new File("/Users/katidid/desktop/COMPETITORS.txt");
+        File outFile = new File("COMPETITORS.txt");
         if (SelectListOfComps.getModel().getSize() == 0)
         {
             try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
@@ -65,7 +65,7 @@ public class EditTournament extends javax.swing.JFrame {
      */
     private void populateJudgeListBox()
     {
-        File outFile = new File("/Users/katidid/desktop/JUDGES.txt");
+        File outFile = new File("JUDGES.txt");
         
         if (SelectListOfJudges.getModel().getSize() == 0)
         {
@@ -161,7 +161,7 @@ public class EditTournament extends javax.swing.JFrame {
                 ListOfCompetitors1.setViewportView(SelectListOfJudges);
 
                 MessageLabel.setForeground(new java.awt.Color(255, 0, 0));
-                MessageLabel.setText("MessageLabel");
+                MessageLabel.setText(".");
 
                 AddedComps.setModel(new DefaultListModel<Competitor>()
                     {
@@ -238,7 +238,7 @@ public class EditTournament extends javax.swing.JFrame {
                                 .addComponent(compLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(compLabel1)
-                                .addGap(109, 109, 109))
+                                .addGap(137, 137, 137))
                         );
                         layout.setVerticalGroup(
                             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +289,7 @@ public class EditTournament extends javax.swing.JFrame {
             selectedComps.add(newComp);
         }
 
-        File tourneyCompOutFile = new File("/Users/katidid/desktop/"+currentTournamentName+ "_TOURNAMENTC.txt");
+        File tourneyCompOutFile = new File(currentTournamentName+ "_TOURNAMENTC.txt");
 
           
         try
@@ -341,7 +341,7 @@ public class EditTournament extends javax.swing.JFrame {
             selectedComps.add(newComp);
         }
 
-        File tourneyJudgeOutFile = new File("/Users/katidid/desktop/"+currentTournamentName+ "_TOURNAMENTJ.txt");
+        File tourneyJudgeOutFile = new File(currentTournamentName+ "_TOURNAMENTJ.txt");
 
           
         try

@@ -183,7 +183,7 @@ public class TournamentMenu extends javax.swing.JFrame {
     public ArrayList<Tournament> getTournaments()
     {
         ArrayList<Tournament> tournamentList = new ArrayList<>();
-        File outFile = new File("/Users/katidid/desktop/TOURNAMENTS.txt");
+        File outFile = new File("TOURNAMENTS.txt");
 
         try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
         {

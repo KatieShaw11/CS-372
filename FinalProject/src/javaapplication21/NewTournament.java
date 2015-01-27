@@ -47,6 +47,7 @@ public class NewTournament extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        NewTournamentButton.setFont(new java.awt.Font("Cochin", 0, 18)); // NOI18N
         NewTournamentButton.setText("New Tournament");
         NewTournamentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +59,7 @@ public class NewTournament extends javax.swing.JFrame {
 
         LocationTextField.setText("Location");
 
+        backButton.setFont(new java.awt.Font("Cochin", 1, 14)); // NOI18N
         backButton.setText("BACK");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +87,7 @@ public class NewTournament extends javax.swing.JFrame {
                                 .addComponent(NewTournamentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(NameTextField)
                                 .addComponent(LocationTextField, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,7 +100,7 @@ public class NewTournament extends javax.swing.JFrame {
                 .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(MessageLabel)
                 .addContainerGap())
         );
@@ -113,7 +115,7 @@ public class NewTournament extends javax.swing.JFrame {
         Tournament newTourney = new Tournament(NameTextField.getText(), LocationTextField.getText());
         ArrayList<Tournament> tournamentList = new ArrayList<>(); 
         tournamentList = getTournaments();
-        File outFile = new File("/Users/katidid/desktop/TOURNAMENTS.txt");
+        File outFile = new File("TOURNAMENTS.txt");
         tournamentList.add(newTourney); 
         try
         {
@@ -137,10 +139,15 @@ public class NewTournament extends javax.swing.JFrame {
         firstMenu.setVisible(true);
         dispose();
     }//GEN-LAST:event_NewTournamentButtonActionPerformed
+    
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Tournament> getTournaments()
     {
         ArrayList<Tournament> tournamentList = new ArrayList<>();
-        File outFile = new File("/Users/katidid/desktop/TOURNAMENTS.txt");
+        File outFile = new File("TOURNAMENTS.txt");
 
         try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
         {

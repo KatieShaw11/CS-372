@@ -46,7 +46,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
      */
     private void populateListBox()
     {
-        File outFile = new File("/Users/katidid/desktop/COMPETITORS.txt");
+        File outFile = new File("COMPETITORS.txt");
         if (ListOfCompetitors.getModel().getSize() == 0)
         {
             try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
@@ -71,7 +71,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
      */
     private void populateJudgeListBox()
     {
-        File outFile = new File("/Users/katidid/desktop/JUDGES.txt");
+        File outFile = new File("JUDGES.txt");
         if (ListOfJudges.getModel().getSize() == 0)
         {
             try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
@@ -96,7 +96,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
      */
     private void populateSchoolBox()
     {
-        File outFile = new File("/Users/katidid/desktop/SCHOOLS.txt");
+        File outFile = new File("SCHOOLS.txt");
         if (schoolComboBox.getItemCount() == 0)
         {
             try (BufferedReader reader = new BufferedReader(new FileReader(outFile))) 
@@ -401,7 +401,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
     public void buttonForAddingCompetitors()
     {
         MessageLabel.setText("");
-        File studentOutFile = new File("/Users/katidid/desktop/COMPETITORS.txt");
+        File studentOutFile = new File("COMPETITORS.txt");
         try
         {
             String firstName = FirstNameTextField.getText();
@@ -468,7 +468,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
     public void buttonForAddingJudges()
     {
         MessageLabel.setText("");
-        File judgeOutFile = new File("/Users/katidid/desktop/JUDGES.txt");
+        File judgeOutFile = new File("JUDGES.txt");
         try
         {
             String firstName = FirstNameTextField.getText();
@@ -518,7 +518,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
     {
         MessageLabel.setText("");
         populateSchoolBox();
-        File schoolOutFile = new File("/Users/katidid/desktop/SCHOOLS.txt");
+        File schoolOutFile = new File("SCHOOLS.txt");
         String name = FirstNameTextField.getText();
         int id = 100000000 + (schoolComboBox.getItemCount()*100000);
 
@@ -702,7 +702,7 @@ public class TournamentSimulator extends javax.swing.JFrame {
     public boolean allFieldsFilled() // So the exception message can be specific 
             // about the type of error it's encountering (wrong text or no text)
     {
-        return FirstNameTextField.getText().length() != 0; // COME BACK TO THISSSSSSSS!
+        return FirstNameTextField.getText().length() != 0;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
