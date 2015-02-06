@@ -16,7 +16,7 @@ import android.util.*;
 
 import java.util.ArrayList;
 
-
+//PT -- cool that you did this in android
 public class MainActivity extends ActionBarActivity {
 
     private ArrayList<Restaurant> restaurantList= new ArrayList <Restaurant>();
@@ -59,7 +59,7 @@ public class MainActivity extends ActionBarActivity {
         int numStars = ratingtext.getNumStars();
 
         Restaurant newRest = new Restaurant(nametext.getText().toString(), addresstext.getText().toString(), numStars, addresstext.getText().toString());
-
+//PT -- Android doesn't do file paths quite the same as on desktop
         File outFile = new File("/Users/katidid/desktop/RESTAURANTS.txt");
 
         try
