@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public class Competitor extends Person
 {
     private int level; // aka division
+    //PT -- might be better to save this separately from a Competitor. It's not the competitor's job to keep track
+    //   of this information; it's the tournament manager's job
     ArrayList<Integer> judgesIDHad = new ArrayList <>();
     ArrayList<Integer> comeptitorsIDHad = new ArrayList <>();
 
