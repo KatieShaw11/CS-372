@@ -17,6 +17,7 @@ import javax.swing.DefaultListModel;
  *
  * @author katidid
  */
+ //PT -- I like how simple most of the classes are in this application. Well done.
 public class TournamentSimulator extends javax.swing.JFrame {
     Menu firstMenu;
     TourneyController controller = new TourneyController();
